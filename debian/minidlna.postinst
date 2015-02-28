@@ -1,0 +1,59 @@
+#!/bin/sh
+# postinst script for minidlna
+
+set -e
+
+unset USER
+
+DEFAULT=/etc/default/minidlna
+
+# Get values from ${DEFAULT}, if it exists.
+[ -r ${DEFAULT} ] && . ${DEFAULT}
+
+# Set the default user and group.
+if [ -z ${USER} ]; then
+    USER=minidlna
+fi
+if [ -z ${GROUP} ]; then
+    GROUP=minidlna
+fi
+
+CONFIG=/etc/minidlna.conf
+HOME=/var/lib/minidlna
+CACHE=/var/cache/minidlna
+
+# Based on the mediatomb debian package.
+
+case "$1" in
+    configure)
+        dpkg-statoverride --force --update \
+            --add ${USER} ${GROUP} 644 ${CONFIG} >/dev/null 2>&1
+
+        if [ -d /var/lib/minidlna ]; then
+            dpkg-statoverride --force --update \
+                --add ${USER} ${GROUP} 755 /var/lib/minidlna >/dev/null 2>&1
+        fi
+
+        mkdir -p ${CACHE}
+        dpkg-statoverride --force --update \
+            --add ${USER} ${GROUP} 755 ${CACHE} >/dev/null 2>&1
+
+        if [ -z "$(grep '^[^#]*db_dir' ${CONFIG})" ]; then
+            for file in ${HOME}/files.db ${HOME}/art_cache; do
+                [ -e ${file} ] && mv ${file} ${CACHE} || true
+            done
+        fi
+    ;;
+
+    abort-upgrade|abort-remove|abort-deconfigure)
+    ;;
+
+    *)
+        echo "postinst called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+
+#DEBHELPER#
+
+exit 0

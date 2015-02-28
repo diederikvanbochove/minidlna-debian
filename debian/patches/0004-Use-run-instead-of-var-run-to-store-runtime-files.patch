@@ -1,0 +1,40 @@
+From: Benoît Knecht <benoit.knecht@fsfe.org>
+Subject: Use /run instead of /var/run to store runtime files
+
+---
+ minidlna.conf    | 2 +-
+ upnpglobalvars.c | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/minidlna.conf b/minidlna.conf
+index 2a06222..2651237 100644
+--- a/minidlna.conf
++++ b/minidlna.conf
+@@ -94,4 +94,4 @@ album_art_names=Cover.jpg/cover.jpg/AlbumArtSmall.jpg/albumartsmall.jpg/AlbumArt
+ #notify_interval=895
+ 
+ # Path to the MiniSSDPd socket, for MiniSSDPd support.
+-#minissdpdsocket=/var/run/minissdpd.sock
++#minissdpdsocket=/run/minissdpd.sock
+diff --git a/upnpglobalvars.c b/upnpglobalvars.c
+index 73ceeca..81f5204 100644
+--- a/upnpglobalvars.c
++++ b/upnpglobalvars.c
+@@ -59,7 +59,7 @@ time_t startup_time = 0;
+ struct runtime_vars_s runtime_vars;
+ uint32_t runtime_flags = INOTIFY_MASK;
+ 
+-const char *pidfilename = "/var/run/minidlna/minidlna.pid";
++const char * pidfilename = "/run/minidlna/minidlna.pid";
+ 
+ char uuidvalue[] = "uuid:00000000-0000-0000-0000-000000000000";
+ char modelname[MODELNAME_MAX_LEN] = ROOTDEV_MODELNAME;
+@@ -78,7 +78,7 @@ struct lan_addr_s lan_addr[MAX_LAN_ADDR];
+ int sssdp = -1;
+ 
+ /* Path of the Unix socket used to communicate with MiniSSDPd */
+-const char * minissdpdsocketpath = "/var/run/minissdpd.sock";
++const char * minissdpdsocketpath = "/run/minissdpd.sock";
+ 
+ /* UPnP-A/V [DLNA] */
+ sqlite3 *db;

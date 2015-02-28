@@ -1,0 +1,23 @@
+From: Benoît Knecht <benoit.knecht@fsfe.org>
+Subject: Add a comment about listening_ip in minidlna.conf
+
+'listening_ip' is a valid configuration option, but it wasn't shown in
+the example comments in /etc/minidlna.conf.
+---
+ minidlna.conf | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/minidlna.conf b/minidlna.conf
+index a56330e..02cbab9 100644
+--- a/minidlna.conf
++++ b/minidlna.conf
+@@ -7,6 +7,9 @@ port=8200
+ # specify the user account name or uid to run as
+ #user=jmaggard
+ 
++# IPv4 address to listen on
++#listening_ip=192.0.2.1
++
+ # set this to the directory you want scanned.
+ # * if you want multiple directories, you can have multiple media_dir= lines
+ # * if you want to restrict a media_dir to specific content types, you

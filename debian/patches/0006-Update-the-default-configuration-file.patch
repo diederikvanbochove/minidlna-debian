@@ -1,0 +1,99 @@
+From: Benoît Knecht <benoit.knecht@fsfe.org>
+Subject: Update the default configuration file
+
+---
+ minidlna.conf | 48 +++++++++++++++++++++++++++++++++++-------------
+ 1 file changed, 35 insertions(+), 13 deletions(-)
+
+diff --git a/minidlna.conf b/minidlna.conf
+index 2651237..ad3f708 100644
+--- a/minidlna.conf
++++ b/minidlna.conf
+@@ -34,11 +34,21 @@ media_dir=/var/lib/minidlna
+ # Path to the directory that should hold the log file.
+ #log_dir=/var/log
+ 
+-# Minimum level of importance of messages to be logged.
+-# Must be one of "off", "fatal", "error", "warn", "info" or "debug".
++# Type and minimum level of importance of messages to be logged.
++#
++# The types are "artwork", "database", "general", "http", "inotify",
++# "metadata", "scanner", "ssdp" and "tivo".
++#
++# The levels are "off", "fatal", "error", "warn", "info" or "debug".
+ # "off" turns of logging entirely, "fatal" is the highest level of importance
+ # and "debug" the lowest.
+-#log_level=warn
++#
++# The types are comma-separated, followed by an equal sign ("="), followed by a
++# level that applies to the preceding types. This can be repeated, separating
++# each of these constructs with a comma.
++#
++# The default is to log all types of messages at the "warn" level.
++#log_level=general,artwork,database,inotify,scanner,metadata,http,ssdp,tivo=warn
+ 
+ # Use a different container as the root of the directory tree presented to
+ # clients. The possible values are:
+@@ -47,40 +57,52 @@ media_dir=/var/lib/minidlna
+ #   * "M" - "Music"
+ #   * "P" - "Pictures"
+ #   * "V" - "Video"
+-# if you specify "B" and client device is audio-only then "Music/Folders" will be used as root
++# If you specify "B" and the client device is audio-only then "Music/Folders"
++# will be used as root.
+ #root_container=.
+ 
+ # Network interface(s) to bind to (e.g. eth0), comma delimited.
++# This option can be specified more than once.
+ #network_interface=
+ 
+-# IPv4 address to listen on (e.g. 192.0.2.1).
++# IPv4 address to listen on (e.g. 192.0.2.1/24).
++# If omitted, the mask defaults to 24. The IPs are added to those determined
++# from the network_interface option above.
++# This option can be specified more than once.
+ #listening_ip=
+ 
+ # Port number for HTTP traffic (descriptions, SOAP, media transfer).
++# This option is mandatory (or it must be specified on the command-line using
++# "-p").
+ port=8200
+ 
+-# URL presented to clients.
+-# The default is the IP address of the server on port 80.
+-#presentation_url=http://example.com:80
++# URL presented to clients (e.g. http://example.com:80).
++#presentation_url=/
+ 
+ # Name that the DLNA server presents to clients.
++# Defaults to "hostname: username".
+ #friendly_name=
+ 
+ # Serial number the server reports to clients.
+-serial=12345678
++# Defaults to 00000000.
++serial=681019810597110
+ 
+ # Model name the server reports to clients.
+ #model_name=Windows Media Connect compatible (MiniDLNA)
+ 
+ # Model number the server reports to clients.
+-model_number=1
++# Defaults to the version number of minidlna.
++#model_number=
+ 
+ # Automatic discovery of new files in the media_dir directory.
+ #inotify=yes
+ 
+-# List of file names to look for when searching for album art. Names should be
+-# delimited with a forward slash ("/").
+-album_art_names=Cover.jpg/cover.jpg/AlbumArtSmall.jpg/albumartsmall.jpg/AlbumArt.jpg/albumart.jpg/Album.jpg/album.jpg/Folder.jpg/folder.jpg/Thumb.jpg/thumb.jpg
++# List of file names to look for when searching for album art.
++# Names should be delimited with a forward slash ("/").
++# This option can be specified more than once.
++album_art_names=Cover.jpg/cover.jpg/AlbumArtSmall.jpg/albumartsmall.jpg
++album_art_names=AlbumArt.jpg/albumart.jpg/Album.jpg/album.jpg
++album_art_names=Folder.jpg/folder.jpg/Thumb.jpg/thumb.jpg
+ 
+ # Strictly adhere to DLNA standards.
+ # This allows server-side downscaling of very large JPEG images, which may

@@ -1,0 +1,102 @@
+From: Benoît Knecht <benoit.knecht@fsfe.org>
+Subject: Reload log file upon receiving SIGHUP
+
+This will allow for logrotate to tell minidlna that it needs to reopen
+its log file.
+---
+ log.c | 41 ++++++++++++++++++++++++++++++++---------
+ log.h |  2 ++
+ 2 files changed, 34 insertions(+), 9 deletions(-)
+
+diff --git a/log.c b/log.c
+index dc1d723..abc8bc8 100644
+--- a/log.c
++++ b/log.c
+@@ -29,6 +29,7 @@
+ #include "log.h"
+ 
+ static FILE *log_fp = NULL;
++static char *log_filename = NULL;
+ static int default_log_level = E_WARN;
+ int log_level[L_MAX];
+ 
+@@ -60,16 +61,21 @@ void
+ log_close(void)
+ {
+ 	if (log_fp)
++	{
+ 		fclose(log_fp);
++		log_fp = NULL;
++	}
++	free(log_filename);
+ }
+ 
+ int
+ log_init(const char *fname, const char *debug)
+ {
+ 	int i;
+-	FILE *fp;
+ 	short int log_level_set[L_MAX];
+ 
++	log_filename = strdup(fname);
++
+ 	if (debug)
+ 	{
+ 		const char *rhs, *lhs, *nlhs, *p;
+@@ -118,14 +124,7 @@ log_init(const char *fname, const char *debug)
+ 		for (i=0; i<L_MAX; i++)
+ 			log_level[i] = default_log_level;
+ 	}
+-
+-	if (!fname)					// use default i.e. stdout
+-		return 0;
+-
+-	if (!(fp = fopen(fname, "a")))
+-		return 1;
+-	log_fp = fp;
+-	return 0;
++	return log_open(fname);
+ }
+ 
+ void
+@@ -172,3 +171,27 @@ log_err(int level, enum _log_facility facility, char *fname, int lineno, char *f
+ 
+ 	return;
+ }
++
++int
++log_open(const char *fname)
++{
++	if (!fname)					// use default i.e. stdout
++		return 0;
++
++	FILE *fp;
++	if (!(fp = fopen(fname, "a")))
++		return 1;
++	log_fp = fp;
++	return 0;
++}
++
++int
++log_reopen(void)
++{
++	if (log_fp)
++	{
++		fclose(log_fp);
++		log_fp = NULL;
++	}
++	return log_open(log_filename);
++}
+diff --git a/log.h b/log.h
+index df0e089..6527fa6 100644
+--- a/log.h
++++ b/log.h
+@@ -47,6 +47,8 @@ extern int log_level[L_MAX];
+ extern int log_init(const char *fname, const char *debug);
+ extern void log_close(void);
+ extern void log_err(int level, enum _log_facility facility, char *fname, int lineno, char *fmt, ...);
++extern int log_open(const char *fname);
++extern int log_reopen(void);
+ 
+ #define DPRINTF(level, facility, fmt, arg...) do { log_err(level, facility, __FILE__, __LINE__, fmt, ##arg); } while (0)
+ 

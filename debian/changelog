@@ -1,0 +1,290 @@
+minidlna (1.1.2+dfsg-1.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Fix FTBFS with libav10.
+    Add 0012-Fix-FTBFS-with-libav10.patch from upstream.
+    Closes: #747813, #751011.
+
+ -- Anibal Monsalve Salazar <anibal@debian.org>  Mon, 16 Jun 2014 10:59:59 +0100
+
+minidlna (1.1.2+dfsg-1) unstable; urgency=low
+
+  * New upstream version (Closes: #711234)
+  * The new upstream version is no longer affected by CVE-2013-2745,
+    CVE-2013-2738 or CVE-2013-2739 (Closes: #717131)
+  * Use SIGUSR1 instead of SIGHUP to reopen the log file after a logrotate,
+    since upstream is now using SIGHUP to reload the network interfaces
+  * Update copyright information for upstream files
+  * Bump Standards-Version to 3.9.5 (no changes required)
+  * Override lintian warning debian-watch-may-check-gpg-signature, as upstream
+    doesn't sign the source tarball
+
+ -- Benoît Knecht <benoit.knecht@fsfe.org>  Mon, 28 Apr 2014 12:05:41 +0200
+
+minidlna (1.1.0+dfsg-1) UNRELEASED; urgency=low
+
+  * New upstream version
+    - Add support for other operating systems
+    - Switch to autoconf from our handcrafted genconfig.sh
+    - Add configuration option for UUID
+    - Add configuration option to specify the user to run as
+    - Add support for limiting a media dir to multiple media types
+    - Force a rescan if we detect a new or missing media_dir entry
+    - Fix crash caused by certain TiVo clients
+    - Fix crash bug on video files with some ffmpeg library versions
+    - Add support for TiVo MPEG-TS files
+    - Add some logging and forking tweaks to work better with systemd
+    - Validate or escape user input to prevent SQL injection
+    - Add forced sorting support for Panasonic devices
+  * Upstream renamed /usr/bin/minidlna to /usr/bin/minidlnad
+    - Update the init script accordingly
+    - Update the documentation accordingly; minidlna(1) is now called
+      minidlnad(1), but the former still points to the latter
+  * Remove warnings about needing to force a rescan after changing media_dir
+    from the documentation, as it is now done automatically
+  * Use dh-autoreconf to deal with the new upstream build system
+  * Add logrotate support (Closes: #697613)
+    - minidlnad reopens its log file upon receiving SIGHUP
+    - Ship a logrotate configuration file that rotates /var/log/minidlna.log
+      weekly
+    - Remove rotated log files when purging the package
+  * Use /var/cache/minidlna as the default db_dir
+    - Move the database file and art cache to this new location if necessary
+      in postinst
+  * Bump Standards-Version to 3.9.4
+    - Depend on initscripts (>= 2.88dsf-13.3) since we use /run
+  * Do not source /lib/init/vars.sh in the init script
+  * Update debian/copyright with new upstream files
+
+ -- Benoît Knecht <benoit.knecht@fsfe.org>  Sun, 23 Jun 2013 08:26:12 +0200
+
+minidlna (1.0.25+dfsg-1) UNRELEASED; urgency=low
+
+  * New upstream version
+    - Fix a couple crash bugs on malformed WAV files
+    - Forcibly tweak the model number for Xbox360 clients, or they might
+      ignore us
+    - Enable all network interfaces by default if none were specified
+    - Add flag to force downscaled thumbnails rather than using embedded ones
+    - Add DirecTV client detection, and fix image resolution issue
+    - Add support for the latest ffmpeg/libav library versions
+    - Fix a potential crash on requests for a resize of a non-existent image
+    - Make DeviceID checking more permissive for Sagem Radio
+  * Update the documentation with new options and various corrections in the
+    following places:
+    - minidlna(1) man page;
+    - minidlna.conf(5) man page;
+    - output of "minidlna -h";
+    - default configuration file.
+  * Display the user minidlna is running as in the default friendly name
+  * Adapt "Get IP and MAC addresses in a non Linux-specific way" patch to
+    upstream changes
+  * Fix Makefile so that hardening flags are actually passed to the compiler
+  * preinst: Make sure that the home directory exists and is owned by the
+    correct user:group
+  * postrm: Do not remove the minidlna user and group on purge
+  * postrm: During purge, only remove the $HOME directory if it's
+    /var/lib/minidlna; we don't want to mess with home directories if the
+    admin changed the default
+  * postrm: Do not remove the configuration file in the purge case, it has
+    already been removed by dpkg before the script is called
+  * Update period of copyright for debian/*
+  * Replace `...` with $(...) in all maintainer scripts
+  * Do not include scripts specific to the git repository in the debian/
+    directory in the source package
+  * Use a .orig suffix in the top-level directory name of the .orig.tar.gz
+    archive, per Best Packaging Practices 6.7.8.2 (thanks to Bart Martens)
+
+ -- Benoît Knecht <benoit.knecht@fsfe.org>  Thu, 26 Jul 2012 17:30:08 +0200
+
+minidlna (1.0.24+dfsg-1) unstable; urgency=low
+
+  * New upstream version (Closes: #661259)
+    - Fix playlist browsing with no SortOrder specified
+    - Fix inotify detection of caption file removal
+    - Handle an empty DeviceID from Zyxel media player SOAP request
+    - Fix false positives in playlist caching optimization when we have
+      duplicate file names in different directories
+    - Trim the camera model name extracted from EXIF tags
+    - Add support for user-configurable log level settings
+    - Add DLNA.ORG_FLAGS support
+  * Update the minidlna.conf(5) man page with new options
+  * Update the default minidlna.conf configuration file accordingly
+  * Bump Standards-Version to 3.9.3
+    - Use /run instead of /var/run by default
+  * Use debhelper compat 9
+  * Update the DEP-5 Format URL in debian/copyright
+
+ -- Benoît Knecht <benoit.knecht@fsfe.org>  Thu, 01 Mar 2012 17:39:15 +0100
+
+minidlna (1.0.23+dfsg-1) unstable; urgency=low
+
+  * New upstream version (Closes: #659871)
+    - Enable the subtitle menu on some Samsung TV's
+    - Add subtitle support for Panasonic TV's
+    - Add workarounds for LifeTab tablets' bad behavior
+    - Speed up playlist parsing
+    - Make metadata-based virtual containers case insensitive
+    - Add folder art support (very few clients support this though)
+    - Improve trimming of quotation marks
+    - Fix SRT caption support with the latest Samsung Series D firmware
+    - Fix subtitles on LG TV's for items whose titles don't have a dot in
+      them
+    - Add support for the av:mediaClass tag, so some Sony devices can filter
+      items by media type
+    - Fix inotify detection issues on first-level folders
+    - Work around LifeTab's broken DLNA support
+    - Add image rotation support during resize (mostly useful for TiVo)
+  * Add copyright information for new upstream files
+  * Remove versioned dependency on adduser and lsb-base, as both are satisfied
+    even in oldstable
+  * Remove dependency on (gawk | mawk) as awk is depended on by an essential
+    package (thanks to Jakub Wilk)
+  * Output messages to stderr in postrm (thanks to Jakub Wilk)
+  * Improve the default configuration file with more detailed comments, that
+    should help avoid confusion about some options (Closes: #653221)
+
+ -- Benoît Knecht <benoit.knecht@fsfe.org>  Fri, 17 Feb 2012 16:18:19 +0100
+
+minidlna (1.0.21+dfsg-1.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Replace libjpeg62-dev build-dep with libjpeg-dev (closes: #643636)
+
+ -- Julien Cristau <jcristau@debian.org>  Sun, 29 Jan 2012 18:36:58 +0100
+
+minidlna (1.0.22+dfsg-1) UNRELEASED; urgency=low
+
+  * Imported Upstream version 1.0.22
+  * Make sure '/etc/init.d/minidlna status' reports the correct status
+    (Closes: #650328)
+  * DEP-5 debian/copyright:
+    - Space-delimited list in Files headers
+    - Bump Format URL to revision 213 (no changes)
+  * Build-Depend on libjpeg-dev instead of libjpeg62-dev, as part of the
+    transition from libjpeg62 to libjpeg8 (Closes: #643636)
+  * Document the 'listening_ip' configuration option
+  * Add a Description and rewrite the Short-Description of the init script
+
+ -- Benoît Knecht <benoit.knecht@fsfe.org>  Wed, 21 Dec 2011 14:06:39 +0100
+
+minidlna (1.0.21+dfsg-2) UNRELEASED; urgency=low
+
+  * Depend on lsb-base (required by the init script)
+
+ -- Benoît Knecht <benoit.knecht@fsfe.org>  Thu, 04 Aug 2011 20:04:57 +0200
+
+minidlna (1.0.21+dfsg-1) unstable; urgency=low
+
+  * New upstream version (1.0.21)
+  * Fix typo in minidlna(1) man page
+  * Document the new root_container option in minidlna.conf(5)
+  * Fix FTBFS on kfreebsd:
+    - Remove FreeBSD version test in genconfig.sh
+    - Include linux/limits.h on Linux only
+    - Make inotify support optional
+    - Compile inotify support on Linux only
+    - Use SYS_clock_gettime instead of __NR_clock_gettime
+    - Define MSG_MORE if it doesn't exist
+    - Get IP and MAC addresses in a non Linux-specific way
+  * Fix runtime failures on kfreebsd:
+    - Do not use sendfile if it's not implemented
+    - Do not let make_dir fail on EISDIR
+  * Add a script and Debian's SVG logo to make a DFSG-compatible icons.c file
+
+ -- Benoît Knecht <benoit.knecht@fsfe.org>  Fri, 22 Jul 2011 11:50:40 +0200
+
+minidlna (1.0.20+dfsg-2) unstable; urgency=low
+
+  * Correct Version Control System links
+  * Document the force-reload option of the init script
+  * Install upstream changelog
+  * Comply with DEP-5 revision 174
+
+ -- Benoît Knecht <benoit.knecht@fsfe.org>  Sat, 02 Jul 2011 14:16:11 +0200
+
+minidlna (1.0.20+dfsg-1) unstable; urgency=low
+
+  * Imported Upstream version 1.0.20 (Closes: #629140)
+  * Make source dfsg clean (Closes: #628952)
+  * Better document the media_dir configuration option (Closes: #626835)
+  * Don't let the configuration fail at compile time on kFreeBSD and Hurd
+  * Update copyright information (and use DEP-5 version 174)
+  * Add links to the git repository of the debian package
+  * Bump Standards-Version to 3.9.2 (no changes)
+  * Raise debhelper compatibility level to 8
+
+ -- Benoît Knecht <benoit.knecht@fsfe.org>  Wed, 29 Jun 2011 21:20:04 +0200
+
+minidlna (1.0.19-1) unstable; urgency=low
+
+  * New upstream version 1.0.19
+
+ -- Benoît Knecht <benoit.knecht@fsfe.org>  Thu, 24 Mar 2011 16:45:08 +0100
+
+minidlna (1.0.18-5) unstable; urgency=low
+
+  [ Piotr Górski ]
+  * Fix FTBFS by linking to libogg (Closes: #618067)
+
+  [ Benoît Knecht ]
+  * Create /var/run/minidlna and put the PID file in it
+    (Closes: #617722, #613853)
+  * Build-depend on libogg-dev explicitly
+
+  [ Justin Maggard ]
+  * Identify Matroska regardless of its content
+
+ -- Benoît Knecht <benoit.knecht@fsfe.org>  Tue, 15 Mar 2011 23:39:17 +0100
+
+minidlna (1.0.18-4) unstable; urgency=low
+
+  [ Justin Maggard ]
+  * Complete/clarify license information
+
+  [ Benoît Knecht ]
+  * Update debian/copyright with the new license info
+  * Fix FSF address in the GPL license headers
+  * Add email addresses in the copyright file
+  * Removing AUTHORS section from the man pages
+  * Remove prerm script and let debhelper generate it
+  * In postrm, only remove files created by minidlna
+  * When minidlna is called with -R, only remove art_cache and files.db
+
+ -- Benoît Knecht <benoit.knecht@fsfe.org>  Tue, 23 Nov 2010 20:26:32 +0100
+
+minidlna (1.0.18-3) unstable; urgency=low
+
+  * Fix the following issues (thanks to Michael Tautschnig for pointing them
+    out):
+    - Lintian warning (hyphen-used-as-minus-sign) in minidlna(1) man page
+    - Lintian warning (maintainer-script-without-set-e) in {pre,post}{inst,rm}
+    - Let {pre,post}inst take action in specific states only
+    - Use values from /etc/default/minidlna in {pre,post}{inst,rm}
+
+ -- Benoît Knecht <benoit.knecht@fsfe.org>  Wed, 03 Nov 2010 00:45:42 +0100
+
+minidlna (1.0.18-2) unstable; urgency=low
+
+  * Add libavutil-dev and libavcodec-dev to Build-Depends (thanks to Fernando
+    Lemos)
+  * Fix a typo in tagutils.c (thanks to Fernando Lemos)
+  * Convert the minidlna man page to mdoc
+  * Add a man page for minidlna.conf
+
+ -- Benoît Knecht <benoit.knecht@fsfe.org>  Fri, 22 Oct 2010 13:06:02 +0200
+
+minidlna (1.0.18-1) unstable; urgency=low
+
+  * Initial release (Closes: #597228)
+  * Adapted Makefile:
+    - Use $(DESTDIR) as installation prefix
+    - Add a distclean target
+    - Custom log directory
+  * Add a log_dir configuration option
+  * Man page for minidlna(1)
+  * Init script
+  * Pre- and post- inst/rm scripts to add/remove a minidlna user and group
+
+ -- Benoît Knecht <benoit.knecht@fsfe.org>  Fri, 15 Oct 2010 00:32:01 +0200
+
