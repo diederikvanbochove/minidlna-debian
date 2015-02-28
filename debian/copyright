@@ -5,7 +5,7 @@ Source: http://sourceforge.net/projects/minidlna/files/
  The icons.c file in the original tarball contained binary blobs of possibly
  unfree images. It has hence been replaced in the DFSG tarball by a file
  containing the free Debian logo instead. It can be generated from the SVG logo
- using the debian/make_icons.sh script (see the header of that file for
+ using the debian/extra/make_icons.sh script (see the header of that file for
  instructions).
 
 Files: albumart.? genconfig.sh image_utils.? inotify.c metadata.?
@@ -46,7 +46,7 @@ Files: log.? tagutils/* po/*.po
 Copyright: 2008-2010, NETGEAR Inc.
 License: GPL-2
 
-Files: icons.c debian/openlogo-nd.svg
+Files: icons.c debian/extra/openlogo-nd.svg
 Copyright: 1999, Software in the Public Interest
 License: Expat
 
