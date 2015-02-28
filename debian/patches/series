@@ -1,12 +1,5 @@
-0001-Add-a-comment-about-listening_ip-in-minidlna.conf.patch
-0002-Improve-the-default-configuration-file.patch
-0003-Update-the-default-configuration-file.patch
-0004-Use-run-instead-of-var-run-to-store-runtime-files.patch
-0005-Update-help-output-shown-by-minidlna-h.patch
-0006-Update-the-default-configuration-file.patch
-0007-Use-USER-instead-of-LOGNAME-in-the-default-friendly_.patch
-0008-Reload-log-file-upon-receiving-SIGHUP.patch
-0009-Remove-warning-about-media_dir-from-minidlna.conf.patch
-0010-Use-var-cache-minidlna-as-the-default-db_dir.patch
-0011-Make-sure-the-database-is-closed-after-scanning.patch
-0012-Fix-FTBFS-with-libav10.patch
+01-run-instead-of-var-run.patch
+02-use-USER-instead-of-LOGNAME.patch
+03-make-sure-the-database-is-closed-after-scanning.patch
+04-reload-log-file-on-SIGUSR2.patch
+05-update-help-output.patch

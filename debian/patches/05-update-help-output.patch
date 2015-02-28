@@ -1,15 +1,12 @@
-From: Benoît Knecht <benoit.knecht@fsfe.org>
-Subject: Update help output shown by "minidlna -h"
+Author: Benoît Knecht <benoit.knecht@fsfe.org>
+Description: Update help output shown by "minidlna -h"
+Updated: 2015-03-01
 
----
- minidlna.c | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
-
-diff --git a/minidlna.c b/minidlna.c
-index b1bb339..b12bc37 100644
---- a/minidlna.c
-+++ b/minidlna.c
-@@ -849,11 +849,13 @@ init(int argc, char **argv)
+Index: minidlna/minidlna.c
+===================================================================
+--- minidlna.orig/minidlna.c	2015-03-02 18:38:28.231459225 +0300
++++ minidlna/minidlna.c	2015-03-02 18:38:28.227459233 +0300
+@@ -884,11 +884,13 @@
  
  	if (runtime_vars.port <= 0)
  	{
