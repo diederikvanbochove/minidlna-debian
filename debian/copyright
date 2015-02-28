@@ -8,10 +8,16 @@ Source: http://sourceforge.net/projects/minidlna/files/
  using the debian/extra/make_icons.sh script (see the header of that file for
  instructions).
 
-Files: albumart.? genconfig.sh image_utils.? inotify.c metadata.?
-       playlist.? scanner.? scanner_sqlite.h sql.? tivo_beacon.h
+Files: albumart.? containers.? image_utils.? inotify.? metadata.?
+       playlist.? scanner.? scanner_sqlite.h sendfile.h sql.? tivo_beacon.h
        tivo_commands.? tivo_utils.? upnpsoap.h utils.? uuid.?
+       AUTHORS NEWS README TODO minidlna.conf linux/minidlna.init.d.script.tmpl
+       .gitignore ChangeLog COPYING
 Copyright: 2008-2010, Justin Maggard <jmaggard@users.sourceforge.net>
+License: GPL-2
+
+Files: minidlna.conf.5 minidlnad.8
+Copyright: 2008 Noel Butler <noelb@ausics.net>
 License: GPL-2
 
 Files: autogen.sh configure.ac Makefile.am
@@ -23,12 +29,12 @@ Copyright: 2013, NETGEAR
 License: GPL-2
 
 Files: codelength.h getifaddr.? minidlnapath.h minidlnatypes.h minissdp.?
-       minixml.? options.c testupnpdescgen.c upnpdescgen.? upnpdescstrings.h
-       upnpreplyparse.?
+       minixml.? options.? testupnpdescgen.c upnpdescgen.? upnpdescstrings.h
+       upnpreplyparse.? LICENCE.miniupnpd
 Copyright: 2005-2008, Thomas Bernard <miniupnp@free.fr>
 License: BSD-3-clause
 
-Files: minidlna.c upnpevents.? upnpglobalvars.c upnphttp.? upnpsoap.c
+Files: minidlna.c upnpevents.? upnpglobalvars.? upnphttp.? upnpsoap.c
 Copyright: 2006-2007, Thomas Bernard <miniupnp@free.fr>
            2008-2012, Justin Maggard <jmaggard@users.sourceforge.net>
 License: BSD-3-clause and GPL-2
@@ -38,13 +44,9 @@ Copyright: 2006, Thomas Bernard <miniupnp@free.fr>
            2013, Benoît Knecht <benoit.knecht@fsfe.org>
 License: BSD-3-clause
 
-Files: ABOUT-NLS po/*
-Copyright: 1995-2012, Free Software Foundation, Inc.
-License: GPL-3+
-
-Files: log.? tagutils/* po/*.po
+Files: log.? tagutils/* po/*
 Copyright: 2008-2010, NETGEAR Inc.
-License: GPL-2
+License: GPL-2+
 
 Files: icons.c debian/extra/openlogo-nd.svg
 Copyright: 1999, Software in the Public Interest
@@ -58,7 +60,7 @@ Files: linux/inotify.h
 Copyright: 2005, John McCutchan <john@johnmccutchan.com>
 License: GPL-2
 
-Files: linux/inotifysyscalls.h
+Files: linux/inotify-syscalls.h
 Copyright: 2005, Robert Love <robert.w.love@intel.com>
 License: GPL-2
 
@@ -78,31 +80,6 @@ Copyright: 2009, Justin Maggard <jmaggard@users.sourceforge.net>
            2010-2012, Benoît Knecht <benoit.knecht@fsfe.org>
 License: GPL-2
 
-Files: depcomp
-Copyright: 1999-2011, Free Software Foundation, Inc.
-License: GPL-2+
-
-Files: install-sh
-Copyright: 1994, X Consortium
-License: Expat
-
-Files: missing
-Copyright: 1996, François Pinard <pinard@iro.umontreal.ca>
-           1996-2012, Free Software Foundation, Inc.
-License: GPL-2+
-
-Files: config.guess config.sub
-Copyright: 1992-2012, Free Software Foundation, Inc.
-License: GPL-2+
-
-Files: config.rpath
-Copyright: 1996, Gordon Matzigkeit <gord@gnu.ai.mit.edu>
-           1996-2010, Free Software Foundation, Inc.
-License: FSFUL
-
-Files: aclocal.m4 configure Makefile.in m4/*.m4
-Copyright: 1992-2011, Free Software Foundation, Inc.
-License: FSFUL
 
 License: GPL-2
  This package is free software; you can redistribute it and/or modify
@@ -136,23 +113,6 @@ License: GPL-2+
  .
  On Debian systems, the complete text of the GNU General
  Public License version 2 can be found in "/usr/share/common-licenses/GPL-2".
-
-License: GPL-3+
- This package is free software; you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 3 of the License, or
- (at your option) any later version.
- .
- This package is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- GNU General Public License for more details.
- .
- You should have received a copy of the GNU General Public License
- along with this program. If not, see <http://www.gnu.org/licenses/>
- .
- On Debian systems, the complete text of the GNU General
- Public License version 3 can be found in "/usr/share/common-licenses/GPL-3".
 
 License: BSD-3-clause
  All rights reserved.
