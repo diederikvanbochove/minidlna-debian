@@ -15,7 +15,7 @@ Build-Depends: autopoint,
                libogg-dev,
                libsqlite3-dev,
                libvorbis-dev
-Standards-Version: 3.9.5
+Standards-Version: 3.9.6
 Homepage: http://sourceforge.net/projects/minidlna/
 Vcs-Git: git://anonscm.debian.org/collab-maint/minidlna.git
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/minidlna.git;a=summary
