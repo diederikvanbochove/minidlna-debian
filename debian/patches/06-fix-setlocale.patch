@@ -1,0 +1,19 @@
+Author: Alexander Gerasiov <gq@debian.org>
+Description: Call setlocale(LC_ALL, "") on init.
+ This fix various issues with messages and encodings.
+Updated: 2015-03-02
+
+Index: minidlna/minidlna.c
+===================================================================
+--- minidlna.orig/minidlna.c	2015-03-02 01:55:28.198051523 +0300
++++ minidlna/minidlna.c	2015-03-02 01:56:08.145971505 +0300
+@@ -478,8 +478,7 @@
+ static void init_nls(void)
+ {
+ #ifdef ENABLE_NLS
+-	setlocale(LC_MESSAGES, "");
+-	setlocale(LC_CTYPE, "en_US.utf8");
++	setlocale(LC_ALL, "");
+ 	DPRINTF(E_DEBUG, L_GENERAL, "Using locale dir %s\n", bindtextdomain("minidlna", getenv("TEXTDOMAINDIR")));
+ 	textdomain("minidlna");
+ #endif

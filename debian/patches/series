@@ -3,3 +3,4 @@
 03-make-sure-the-database-is-closed-after-scanning.patch
 04-reload-log-file-on-SIGUSR2.patch
 05-update-help-output.patch
+06-fix-setlocale.patch
