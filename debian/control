@@ -1,7 +1,7 @@
 Source: minidlna
 Section: net
 Priority: optional
-Maintainer: Benoît Knecht <benoit.knecht@fsfe.org>
+Maintainer: Alexander GQ Gerasiov <gq@debian.org>
 Build-Depends: autopoint,
                debhelper (>= 9),
                dh-autoreconf,
