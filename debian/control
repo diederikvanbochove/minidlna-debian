@@ -17,8 +17,8 @@ Build-Depends: autopoint,
                libvorbis-dev
 Standards-Version: 3.9.5
 Homepage: http://sourceforge.net/projects/minidlna/
-Vcs-Git: git://gitorious.org/debian-pkg/minidlna.git
-Vcs-Browser: https://gitorious.org/debian-pkg/minidlna
+Vcs-Git: git://anonscm.debian.org/collab-maint/minidlna.git
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/minidlna.git;a=summary
 
 Package: minidlna
 Architecture: any
