@@ -1,3 +1,40 @@
+minidlna (1.1.4+dfsg-1) unstable; urgency=medium
+
+  * New upstream release. (Closes: #774421, #698312, #764278, #779577)
+  * debian/control: Set myself as maintainer (Closes: #779429).
+  * debian/control: Point Vcs-* to collab-maint.
+  * Move debian/make_icons.sh and debian/openlogo-nd.svg to debian/extra.
+  * debian/copyright: Update file, fix some issues.
+  * debian/copyright: Add myself as copyright holder for debian/*.
+  * Remove debian/gbp.conf, debian/make_patches.sh, debian/mbox2dep3.py.
+  * Update Debian patches.
+     + Patches removed (do ship patched debian/minidlna.conf instead):
+       0001-Add-a-comment-about-listening_ip-in-minidlna.conf.patch,
+       0002-Improve-the-default-configuration-file.patch,
+       0003-Update-the-default-configuration-file.patch,
+       0006-Update-the-default-configuration-file.patch,
+       0009-Remove-warning-about-media_dir-from-minidlna.conf.patch,
+       0010-Use-var-cache-minidlna-as-the-default-db_dir.patch
+     + Patches renamed and refreshed:
+       0004-Use-run-instead-of-var-run-to-store-runtime-files.patch ->
+         01-run-instead-of-var-run.patch
+       0007-Use-USER-instead-of-LOGNAME-in-the-default-friendly_.patch ->
+         02-use-USER-instead-of-LOGNAME.patch
+       0011-Make-sure-the-database-is-closed-after-scanning.patch ->
+         03-make-sure-the-database-is-closed-after-scanning.patch
+       0005-Update-help-output-shown-by-minidlna-h.patch ->
+         05-update-help-output.patch
+     + Patch renamed and rewritten:
+       0008-Reload-log-file-upon-receiving-SIGHUP.patch ->
+         04-reload-log-file-on-SIGUSR2.patch (Closes: #747853,  #749265)
+  * Add 06-fix-setlocale.patch: Fix encoding issues. (Closes: #770120)
+  * debian/control: Bump Standard's version.
+  * debian/rules: Install to /usr/sbin, not to /usr/bin. Also (Closes: #760792).
+  * debian/minidlna.init: Rewrite init script. (Based on one from dh_make.)
+  * Install debian/minidlna.conf, not upstream one.
+
+ -- Alexander GQ Gerasiov <gq@debian.org>  Mon, 02 Mar 2015 19:14:08 +0300
+
 minidlna (1.1.2+dfsg-1.1) unstable; urgency=medium
 
   * Non-maintainer upload.
