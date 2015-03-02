@@ -1,1 +1,1 @@
-minidlna.conf /etc
+debian/minidlna.conf /etc
