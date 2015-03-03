@@ -32,6 +32,8 @@ minidlna (1.1.4+dfsg-1) unstable; urgency=medium
   * debian/rules: Install to /usr/sbin, not to /usr/bin. Also (Closes: #760792).
   * debian/minidlna.init: Rewrite init script. (Based on one from dh_make.)
   * Install debian/minidlna.conf, not upstream one.
+  * debian/watch: Fix issue with upstream tarballs. Thanks  Florian Will.
+    (Closes: #751965)
 
  -- Alexander GQ Gerasiov <gq@debian.org>  Mon, 02 Mar 2015 19:14:08 +0300
 
