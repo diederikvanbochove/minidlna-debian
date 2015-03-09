@@ -25,7 +25,6 @@
 .Op Fl d
 .Op Fl v
 .Op Fl u Ar user
-.Op Fl a Ar ip_address
 .Op Fl i Ar interface
 .Op Fl p Ar port
 .Op Fl s Ar serial
@@ -51,24 +50,16 @@ By default,
 .Nm
 listens on all the network interfaces (except loopback) for clients. This
 behavior can be changed on the command-line using the
-.Fl a
-or
 .Fl i
-options, or in the configuration file through the
-.Cm listening_ip
-or
+option, or in the configuration file through the
 .Cm network_interface
-options
+option
 .Pq see Xr minidlna.conf 5 for details .
 .Sh OPTIONS
 Most of the options below can also be set in a configuration file, as described
 in
 .Xr minidlna.conf 5 .
 .Bl -tag -width Ds
-.It Fl a Ar ip_address
-IP address to listen on
-.Pq e.g. 198.51.100.1/24 .
-If the mask is omitter, it defaults to /24. Can be specified more than once.
 .It Fl d
 Activate debug mode (do not daemonize).
 .It Fl f Ar config_file

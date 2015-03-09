@@ -74,15 +74,6 @@ to enable inotify monitoring of the files under
 to automatically discover new files. Set to
 .Dq no
 to disable inotify.
-.It Cm listening_ip
-IPv4 address
-.Nm minidlnad
-should listen on
-.Pq e.g. Dq 198.51.100.1/24 .
-If omitted, the mask defaults to /24. This option can be specified more than
-once. If unspecified or empty,
-.Nm minidlnad
-binds to the network interfaces given in
 .Cm network_interface ;
 if it is also unspecified or empty, it binds to all the valid network
 interfaces
@@ -178,10 +169,7 @@ Network interface(s) to bind to
 .Pq e.g. eth0 ,
 comma delimited. This option can be specified more than once. If unspecified or empty,
 .Nm minidlnad
-binds to the IPs given in
-.Cm listening_ip ;
-if it is also unspecified or empty, it binds to all the valid network
-interfaces
+binds to all the valid network interfaces
 .Pq except loopback .
 .It Cm notify_interval
 Set the notify interval, in seconds. The default is 895 seconds.
