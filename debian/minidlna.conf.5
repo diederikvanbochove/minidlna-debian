@@ -66,6 +66,9 @@ Customize the name that the
 .Nm minidlnad
 server sends to clients. Defaults to
 .Dq hostname:\ username .
+.It Cm force_sort_criteria
+Always set SortCriteria to this value, regardless of the SortCriteria passed by the clien
+t. ( E.g. force_sort_criteria=+upnp:class,+upnp:originalTrackNumber,+dc:title )
 .It Cm inotify
 Set to
 .Dq yes
@@ -124,6 +127,8 @@ ssdp,\:tivo=warn
 which logs every type of message at the
 .Dq warn
 level.
+.It Cm max_connections
+Specify maximum number of simultaneous connections. Note: many clients open several simultaneous connections while streaming.
 .It Cm media_dir
 Path to the directory containing the media files the
 .Nm minidlnad
@@ -152,6 +157,8 @@ For example, if you want to include only video files located under the
 .Pa /opt/media/videos
 directory, you would use
 .Cm media_dir=V,/opt/media/videos .
+.It Cm merge_media_dirs
+Merge all media_dir base contents into the root container. The default value is no.
 .It Cm minissdpdsocket
 Path to the MiniSSDPd socket, if you want to use
 .Nm minidlnad
@@ -236,6 +243,8 @@ then this option has no effect and you should set
 in
 .Pa /etc/default/minidlna
 instead.
+.It Cm uuid
+Specify UID to run as.
 .El
 .Sh FILES
 .Bl -tag -width Ds
