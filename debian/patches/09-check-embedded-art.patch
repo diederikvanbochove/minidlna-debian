@@ -1,0 +1,27 @@
+Description: Handle Cover Art at end of file
+Author: Mathieu Malaterre <malat@debian.org>
+Bug-Debian: https://bugs.debian.org/781811
+Forwarded: http://sourceforge.net/p/minidlna/patches/140/
+
+Index: minidlna/metadata.c
+===================================================================
+--- minidlna.orig/metadata.c
++++ minidlna/metadata.c
+@@ -696,13 +696,16 @@ GetVideoMetadata(const char *path, char
+ 			ac = ctx->streams[audio_stream]->codec;
+ 			continue;
+ 		}
+-		else if( video_stream == -1 &&
++		else if(
+ 		         !lav_is_thumbnail_stream(ctx->streams[i], &m.thumb_data, &m.thumb_size) &&
+ 			 ctx->streams[i]->codec->codec_type == AVMEDIA_TYPE_VIDEO )
+ 		{
++		if( video_stream == -1 )
++{
+ 			video_stream = i;
+ 			vc = ctx->streams[video_stream]->codec;
+ 			continue;
++}
+ 		}
+ 	}
+ 	path_cpy = strdup(path);

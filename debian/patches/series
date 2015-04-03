@@ -6,3 +6,4 @@
 06-fix-setlocale.patch
 07-fix-multi-artist-album-handling.patch
 08_fix_multicast_from_other_subnet.patch
+09-check-embedded-art.patch
