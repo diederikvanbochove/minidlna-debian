@@ -10,9 +10,9 @@ Subject: [PATCH] Fixed a problem when SSDP-multicast come from a different
 
 Index: minidlna/minissdp.c
 ===================================================================
---- minidlna.orig/minissdp.c	2015-03-10 02:35:58.204650407 +0300
-+++ minidlna/minissdp.c	2015-03-10 02:42:20.583782260 +0300
-@@ -73,6 +73,10 @@
+--- minidlna.orig/minissdp.c
++++ minidlna/minissdp.c
+@@ -73,6 +73,10 @@ AddMulticastMembership(int s, struct lan
  	imr.imr_multiaddr.s_addr = inet_addr(SSDP_MCAST_ADDR);
  	imr.imr_interface.s_addr = iface->addr.s_addr;
  #endif
@@ -23,14 +23,17 @@ Index: minidlna/minissdp.c
  	ret = setsockopt(s, IPPROTO_IP, IP_ADD_MEMBERSHIP, (void *)&imr, sizeof(imr));
  	if (ret < 0 && errno != EADDRINUSE)
  	{
-@@ -102,12 +106,18 @@
+@@ -102,12 +106,20 @@ OpenAndConfSSDPReceiveSocket(void)
  
  	if (setsockopt(s, SOL_SOCKET, SO_REUSEADDR, &i, sizeof(i)) < 0)
  		DPRINTF(E_WARN, L_SSDP, "setsockopt(udp, SO_REUSEADDR): %s\n", strerror(errno));
+-	
 +
++#ifdef IP_PKTINFO
 +	if (setsockopt(s, IPPROTO_IP, IP_PKTINFO, &i, sizeof(i)) < 0)
 +		DPRINTF(E_WARN, L_SSDP, "setsockopt(udp, IP_PKTINFO): %s\n", strerror(errno));
- 	
++#endif
++
  	memset(&sockname, 0, sizeof(struct sockaddr_in));
  	sockname.sin_family = AF_INET;
  	sockname.sin_port = htons(SSDP_PORT);
@@ -44,17 +47,21 @@ Index: minidlna/minissdp.c
  
  	if (bind(s, (struct sockaddr *)&sockname, sizeof(struct sockaddr_in)) < 0)
  	{
-@@ -476,15 +486,25 @@
+@@ -476,15 +488,34 @@ ProcessSSDPRequest(int s, unsigned short
  {
  	int n;
  	char bufr[1500];
--	socklen_t len_r;
++#ifdef IP_PKTINFO
 +	char cmbuf[1500];
++#else
+ 	socklen_t len_r;
++#endif
  	struct sockaddr_in sendername;
  	int i;
  	char *st = NULL, *mx = NULL, *man = NULL, *mx_end = NULL;
  	int man_len = 0;
 -	len_r = sizeof(struct sockaddr_in);
++#ifdef IP_PKTINFO
 +	struct iovec iovec = {
 +		.iov_base = bufr,
 +		.iov_len = sizeof(bufr)-1
@@ -68,33 +75,20 @@ Index: minidlna/minissdp.c
 +		.msg_controllen = sizeof(cmbuf)
 +	};
  
--	n = recvfrom(s, bufr, sizeof(bufr)-1, 0,
--	             (struct sockaddr *)&sendername, &len_r);
 +	n = recvmsg(s, &mh, 0);
++#else
+ 	n = recvfrom(s, bufr, sizeof(bufr)-1, 0,
+-	             (struct sockaddr *)&sendername, &len_r);
++		(struct sockaddr *)&sendername, &len_r);
++#endif
  	if (n < 0)
  	{
  		DPRINTF(E_ERROR, L_SSDP, "recvfrom(udp): %s\n", strerror(errno));
-@@ -624,23 +644,24 @@
+@@ -624,12 +655,32 @@ ProcessSSDPRequest(int s, unsigned short
  		else if (st && (st_len > 0))
  		{
  			int l;
--			int iface = 0;
--			/* find in which sub network the client is */
--			for (i = 0; i < n_lan_addr; i++)
--			{
--				if((sendername.sin_addr.s_addr & lan_addr[i].mask.s_addr) ==
--				   (lan_addr[i].addr.s_addr & lan_addr[i].mask.s_addr))
--				{
--					iface = i;
--					break;
--				}
--			}
--			if (n_lan_addr == i)
--			{
--				DPRINTF(E_DEBUG, L_SSDP, "Ignoring SSDP M-SEARCH on other interface [%s]\n",
--					inet_ntoa(sendername.sin_addr));
--				return;
--			}
++#ifdef IP_PKTINFO
 +			char host[40];
 +			struct cmsghdr *cmsg;
 +
@@ -113,24 +107,54 @@ Index: minidlna/minissdp.c
 +				hostInAddr = pi->ipi_spec_dst;
 +				inet_ntop(AF_INET, &hostInAddr, host, sizeof(host));
 + 			}
++#else
+ 			int iface = 0;
+ 			/* find in which sub network the client is */
+ 			for (i = 0; i < n_lan_addr; i++)
+ 			{
+ 				if((sendername.sin_addr.s_addr & lan_addr[i].mask.s_addr) ==
+-				   (lan_addr[i].addr.s_addr & lan_addr[i].mask.s_addr))
++						(lan_addr[i].addr.s_addr & lan_addr[i].mask.s_addr))
+ 				{
+ 					iface = i;
+ 					break;
+@@ -638,9 +689,10 @@ ProcessSSDPRequest(int s, unsigned short
+ 			if (n_lan_addr == i)
+ 			{
+ 				DPRINTF(E_DEBUG, L_SSDP, "Ignoring SSDP M-SEARCH on other interface [%s]\n",
+-					inet_ntoa(sendername.sin_addr));
++						inet_ntoa(sendername.sin_addr));
+ 				return;
+ 			}
++#endif
  			DPRINTF(E_DEBUG, L_SSDP, "SSDP M-SEARCH from %s:%d ST: %.*s, MX: %.*s, MAN: %.*s\n",
  				inet_ntoa(sendername.sin_addr),
  				ntohs(sendername.sin_port),
-@@ -675,7 +696,7 @@
+@@ -675,7 +727,12 @@ ProcessSSDPRequest(int s, unsigned short
  				}
  				_usleep(random()>>20);
  				SendSSDPResponse(s, sendername, i,
 -						lan_addr[iface].str, port);
-+						host, port);
++#ifdef IP_PKTINFO
++						host,
++#else
++						lan_addr[iface].str,
++#endif
++						port);
  				return;
  			}
  			/* Responds to request with ST: ssdp:all */
-@@ -686,7 +707,7 @@
+@@ -686,7 +743,12 @@ ProcessSSDPRequest(int s, unsigned short
  				{
  					l = strlen(known_service_types[i]);
  					SendSSDPResponse(s, sendername, i,
 -							lan_addr[iface].str, port);
-+							host, port);
++#ifdef IP_PKTINFO
++							host,
++#else
++							lan_addr[iface].str,
++#endif
++							port);
  				}
  			}
  		}
