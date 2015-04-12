@@ -1,3 +1,13 @@
+minidlna (1.1.4+dfsg-3) unstable; urgency=medium
+
+  * Add debian/patches/09-check-embedded-art.patch: Better handle embedded
+    art in mp4. (Closes: #781811)
+  * 08_fix_multicast_from_other_subnet.patch updated to not use IP_PKTINFO
+    on systems without it (e.g. kFreeBSD). Fixes FTBFS on non-linux arches.
+  * Add 10-fix-FTBFS-on-Hurd.patch: Fix FTBFS on GNU/Hurd.
+
+ -- Alexander GQ Gerasiov <gq@debian.org>  Sun, 12 Apr 2015 18:33:47 +0300
+
 minidlna (1.1.4+dfsg-2) unstable; urgency=medium
 
   * debian/changelog: Add missing record about debian/watch.
