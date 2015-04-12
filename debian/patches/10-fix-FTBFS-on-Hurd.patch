@@ -1,0 +1,18 @@
+Author: Alexander Gerasiov <gq@debian.org>
+Description: Fix FTBFS on GNU/Hurd caused by PATH_MAX absence.
+Updated: 2015-04-12
+
+Index: minidlna/upnpglobalvars.h
+===================================================================
+--- minidlna.orig/upnpglobalvars.h
++++ minidlna/upnpglobalvars.h
+@@ -236,4 +236,9 @@ extern volatile short int quitting;
+ extern volatile uint32_t updateID;
+ extern const char *force_sort_criteria;
+ 
++/* Fix for FTBFS on GNU/Hurd */
++#if !defined(PATH_MAX) && defined(MAXPATHLEN)
++#define PATH_MAX MAXPATHLEN
++#endif
++
+ #endif
