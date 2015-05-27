@@ -1,3 +1,10 @@
+minidlna (1.1.4+dfsg-4) unstable; urgency=medium
+
+  * Remove wrong 10-fix-FTBFS-on-Hurd.patch, it's senseless.
+  * Add 10-db_dir-should-not-affect-log_dir.patch (Closes: #786776)
+
+ -- Alexander GQ Gerasiov <gq@debian.org>  Wed, 27 May 2015 16:33:45 +0300
+
 minidlna (1.1.4+dfsg-3) unstable; urgency=medium
 
   * Add debian/patches/09-check-embedded-art.patch: Better handle embedded
