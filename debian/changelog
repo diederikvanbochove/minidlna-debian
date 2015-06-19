@@ -1,3 +1,9 @@
+minidlna (1.1.4+dfsg-4~bpo8+1) jessie-backports; urgency=medium
+
+  * Rebuild for jessie-backports.
+
+ -- Alexander GQ Gerasiov <gq@debian.org>  Sat, 20 Jun 2015 01:50:46 +0300
+
 minidlna (1.1.4+dfsg-4) unstable; urgency=medium
 
   * Remove wrong 10-fix-FTBFS-on-Hurd.patch, it's senseless.
