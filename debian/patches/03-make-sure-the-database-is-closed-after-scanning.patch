@@ -2,10 +2,8 @@ Author: Benoît Knecht <benoit.knecht@fsfe.org>
 Description: Make sure the database is closed after scanning
 Updated: 2015-03-01
 
-Index: minidlna/minidlna.c
-===================================================================
---- minidlna.orig/minidlna.c	2015-03-02 18:37:39.727565733 +0300
-+++ minidlna/minidlna.c	2015-03-02 18:37:39.727565733 +0300
+--- a/minidlna.c
++++ b/minidlna.c
 @@ -376,6 +376,7 @@
  		open_db(&db);
  		if (*scanner_pid == 0) /* child (scanner) process */
@@ -14,7 +12,7 @@ Index: minidlna/minidlna.c
  			start_scanner();
  			sqlite3_close(db);
  			log_close();
-@@ -388,6 +389,7 @@
+@@ -389,6 +390,7 @@
  		}
  #else
  		start_scanner();

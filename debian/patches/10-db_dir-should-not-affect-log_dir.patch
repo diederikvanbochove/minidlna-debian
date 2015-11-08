@@ -6,7 +6,7 @@ Subject: In the case db_dir is defined in config, but log_dir is not, upstream
  uses db_dir as log_dir. We think this is wrong for Debian version of minidlna. 
 --- a/minidlna.c
 +++ b/minidlna.c
-@@ -751,10 +751,7 @@
+@@ -755,10 +755,7 @@
  	}
  	if (log_path[0] == '\0')
  	{

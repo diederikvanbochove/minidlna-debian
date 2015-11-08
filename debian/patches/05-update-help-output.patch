@@ -2,11 +2,9 @@ Author: Benoît Knecht <benoit.knecht@fsfe.org>
 Description: Update help output shown by "minidlna -h"
 Updated: 2015-03-01
 
-Index: minidlna/minidlna.c
-===================================================================
---- minidlna.orig/minidlna.c	2015-03-02 18:38:28.231459225 +0300
-+++ minidlna/minidlna.c	2015-03-02 18:38:28.227459233 +0300
-@@ -884,11 +884,13 @@
+--- a/minidlna.c
++++ b/minidlna.c
+@@ -888,11 +888,13 @@
  
  	if (runtime_vars.port <= 0)
  	{

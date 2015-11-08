@@ -7,11 +7,9 @@ Description: Use $USER instead of $LOGNAME in the default friendly_name
  minidlna is currently running as.
 Updated: 2015-03-01
 
-diff --git a/minidlna.c b/minidlna.c
-index b12bc37..b4a3770 100644
 --- a/minidlna.c
 +++ b/minidlna.c
-@@ -263,7 +263,7 @@ getfriendlyname(char *buf, int len)
+@@ -264,7 +264,7 @@
  #endif
  #else
  	char * logname;

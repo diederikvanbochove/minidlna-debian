@@ -5,6 +5,4 @@
 05-update-help-output.patch
 06-fix-setlocale.patch
 07-fix-multi-artist-album-handling.patch
-08_fix_multicast_from_other_subnet.patch
-09-check-embedded-art.patch
 10-db_dir-should-not-affect-log_dir.patch

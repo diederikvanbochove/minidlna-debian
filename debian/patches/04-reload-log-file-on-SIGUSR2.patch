@@ -5,10 +5,8 @@ Description: Reload log file upon receiving SIGUSR2
  its log file.
 Updated: 2015-03-01
 
-Index: minidlna/log.c
-===================================================================
---- minidlna.orig/log.c	2015-03-01 21:42:28.281681516 +0300
-+++ minidlna/log.c	2015-03-01 22:04:43.742673653 +0300
+--- a/log.c
++++ b/log.c
 @@ -29,6 +29,7 @@
  #include "log.h"
  
@@ -70,10 +68,8 @@ Index: minidlna/log.c
  	return 0;
  }
  
-Index: minidlna/log.h
-===================================================================
---- minidlna.orig/log.h	2015-03-01 21:42:28.281681516 +0300
-+++ minidlna/log.h	2015-03-01 21:49:43.440698741 +0300
+--- a/log.h
++++ b/log.h
 @@ -46,6 +46,7 @@
  extern int log_level[L_MAX];
  extern int log_init(const char *fname, const char *debug);
@@ -82,10 +78,8 @@ Index: minidlna/log.h
  extern void log_err(int level, enum _log_facility facility, char *fname, int lineno, char *fmt, ...)
  	__attribute__((__format__ (__printf__, 5, 6)));
  
-Index: minidlna/minidlna.c
-===================================================================
---- minidlna.orig/minidlna.c	2015-03-01 22:04:25.870713758 +0300
-+++ minidlna/minidlna.c	2015-03-01 22:04:51.730655729 +0300
+--- a/minidlna.c
++++ b/minidlna.c
 @@ -166,6 +166,15 @@
  }
  
@@ -102,7 +96,7 @@ Index: minidlna/minidlna.c
  sighup(int sig)
  {
  	signal(sig, sighup);
-@@ -965,6 +974,8 @@
+@@ -969,6 +978,8 @@
  	sa.sa_handler = process_handle_child_termination;
  	if (sigaction(SIGCHLD, &sa, NULL))
  		DPRINTF(E_FATAL, L_GENERAL, "Failed to set %s handler. EXITING.\n", "SIGCHLD");
