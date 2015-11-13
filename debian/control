@@ -23,7 +23,6 @@ Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/minidlna.git;a=sum
 Package: minidlna
 Architecture: any
 Depends: adduser,
-         initscripts (>= 2.88dsf-13.3),
          lsb-base,
          ${misc:Depends},
          ${shlibs:Depends}
