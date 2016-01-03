@@ -3,39 +3,13 @@
 
 set -e
 
-USER=minidlna
-DEFAULT_HOME="/var/lib/${USER}"
-HOME=$(getent passwd ${USER} | awk -F: '{ print $6 }')
-[ -z "${HOME}" ] && HOME="${DEFAULT_HOME}"
-CACHE=/var/cache/minidlna
-CONFIG=/etc/minidlna.conf
-PIDDIR=/run/minidlna
-
-# Based on the mediatomb debian package.
-
 case "$1" in
-    remove)
-        rm -rf ${PIDDIR}
-        ;;
-
     purge)
-        # Only remove the files we expect minidlna to have created, in case the
-        # user stored something valuable there.
-        for dir in "${HOME}" "${DEFAULT_HOME}" "${CACHE}"; do
-            rm -rf "${dir}/art_cache"
-            rm -f  "${dir}/files.db"
-        done
-        for dir in "${DEFAULT_HOME}" "${CACHE}"; do
-            [ -d "${dir}" ] && \
-                rmdir --ignore-fail-on-non-empty "${dir}"
-        done
+	rm -rf /var/cache/minidlna
         rm -f /var/log/minidlna.log*
-
-        dpkg-statoverride --quiet --remove ${CONFIG} || true
-        dpkg-statoverride --quiet --remove /var/lib/minidlna || true
         ;;
 
-    upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
+    remove|upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
         ;;
 
     *)

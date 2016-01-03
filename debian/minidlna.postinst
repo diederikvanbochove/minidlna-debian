@@ -3,56 +3,61 @@
 
 set -e
 
-unset USER
+USER=minidlna
+HOME_DIR=/var/lib/minidlna
+CACHE_DIR=/var/cache/minidlna
 
-DEFAULT=/etc/default/minidlna
+setup_user() {
 
-# Get values from ${DEFAULT}, if it exists.
-[ -r ${DEFAULT} ] && . ${DEFAULT}
+	if getent passwd "${USER}" >/dev/null; then
+		adduser --quiet\
+			--system \
+			--group \
+			--gecos "MiniDLNA server" \
+			--home "${HOME_DIR}" \
+			${USER}
+	fi
+}
 
-# Set the default user and group.
-if [ -z ${USER} ]; then
-    USER=minidlna
+setup_cache() {
+	if [ ! -d "${CACHE_DIR}" ];then
+		mkdir -p "${CACHE_DIR}"
+		chown ${USER}:${USER} "${CACHE_DIR}"
+		chmod 750 "${CACHE_DIR}"
+	fi
+}
+
+fix_statoverride() {
+	# Previous versions create some dumb overrides and do not clean them on
+	# removal, so we should remove them here.
+        for file in /var/lib/minidlna /var/cache/minidlna /etc/minidlna.conf;do
+		if dpkg-statoverride --list "${file}" >/dev/null; then
+			dpkg-statoverride --remove "${file}"
+		fi
+	done
+}
+
+fix_permissions() {
+	# Previous versions use some strange and even not secure permissions,
+	# so we shold fix them here.
+	chown root:root /etc/minidlna.conf
+	chown ${USER}:${USER} "${CACHE_DIR}"
+	chmod 750 "${CACHE_DIR}"
+}
+
+ACTION="$1"
+OLD_VERSION="$2"
+
+if [ "$ACTION" = configure ];then
+	setup_user
+
+	if dpkg --compare-versions "$OLD_VERSION" lt-nl 1.1.5; then
+		fix_statoverride
+		fix_permissions
+	fi
+
+	setup_cache
 fi
-if [ -z ${GROUP} ]; then
-    GROUP=minidlna
-fi
-
-CONFIG=/etc/minidlna.conf
-HOME=/var/lib/minidlna
-CACHE=/var/cache/minidlna
-
-# Based on the mediatomb debian package.
-
-case "$1" in
-    configure)
-        dpkg-statoverride --force --update \
-            --add ${USER} ${GROUP} 644 ${CONFIG} >/dev/null 2>&1
-
-        if [ -d /var/lib/minidlna ]; then
-            dpkg-statoverride --force --update \
-                --add ${USER} ${GROUP} 755 /var/lib/minidlna >/dev/null 2>&1
-        fi
-
-        mkdir -p ${CACHE}
-        dpkg-statoverride --force --update \
-            --add ${USER} ${GROUP} 755 ${CACHE} >/dev/null 2>&1
-
-        if [ -z "$(grep '^[^#]*db_dir' ${CONFIG})" ]; then
-            for file in ${HOME}/files.db ${HOME}/art_cache; do
-                [ -e ${file} ] && mv ${file} ${CACHE} || true
-            done
-        fi
-    ;;
-
-    abort-upgrade|abort-remove|abort-deconfigure)
-    ;;
-
-    *)
-        echo "postinst called with unknown argument \`$1'" >&2
-        exit 1
-    ;;
-esac
 
 #DEBHELPER#
 
