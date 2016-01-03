@@ -1,3 +1,15 @@
+minidlna (1.1.5+dfsg-1) unstable; urgency=medium
+
+  * New upstream release. (Closes: #790927.)
+  * debian/patches refreshed,
+    08_fix_multicast_from_other_subnet.patch and
+    09-check-embedded-art.patch removed: fixed upstream.
+  * debian/control: Remove initscripts dependency (Closes: #804979).
+  * Refactor maintainer's scrips: remove conffile parsing and dpkg-statoverride usage.
+  * minidlnad.1: Update pidfile location. (Closes: #805582.)
+
+ -- Alexander GQ Gerasiov <gq@debian.org>  Sun, 03 Jan 2016 16:45:53 +0300
+
 minidlna (1.1.4+dfsg-4) unstable; urgency=medium
 
   * Remove wrong 10-fix-FTBFS-on-Hurd.patch, it's senseless.
