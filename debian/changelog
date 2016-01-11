@@ -1,3 +1,10 @@
+minidlna (1.1.5+dfsg-2) unstable; urgency=high
+
+  * postinst: Fix user setup. (Closes: #810343.)
+  * minidlnad.1: Clarify -S option behavior. (Closes: #805583)
+
+ -- Alexander GQ Gerasiov <gq@debian.org>  Mon, 11 Jan 2016 13:58:27 +0300
+
 minidlna (1.1.5+dfsg-1) unstable; urgency=medium
 
   * New upstream release. (Closes: #790927.)
