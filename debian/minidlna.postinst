@@ -9,7 +9,7 @@ CACHE_DIR=/var/cache/minidlna
 
 setup_user() {
 
-	if getent passwd "${USER}" >/dev/null; then
+	if ! getent passwd "${USER}" >/dev/null; then
 		adduser --quiet\
 			--system \
 			--group \
