@@ -1,3 +1,9 @@
+minidlna (1.1.5+dfsg-2~bpo8+1) jessie-backports; urgency=medium
+
+  * Rebuild for jessie-backports.
+
+ -- Alexander GQ Gerasiov <gq@debian.org>  Fri, 22 Jan 2016 11:37:42 +0300
+
 minidlna (1.1.5+dfsg-2) unstable; urgency=high
 
   * postinst: Fix user setup. (Closes: #810343.)
