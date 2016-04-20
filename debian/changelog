@@ -1,3 +1,10 @@
+minidlna (1.1.5+dfsg-3) unstable; urgency=medium
+
+  * Control /var/lib/minidlna with debhelper/dpkg. (Closes: #820286.)
+  * Bump Standard's version, no changes needed.
+
+ -- Alexander GQ Gerasiov <gq@debian.org>  Thu, 21 Apr 2016 00:25:41 +0300
+
 minidlna (1.1.5+dfsg-2) unstable; urgency=high
 
   * postinst: Fix user setup. (Closes: #810343.)
