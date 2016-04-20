@@ -15,6 +15,7 @@ setup_user() {
 			--group \
 			--gecos "MiniDLNA server" \
 			--home "${HOME_DIR}" \
+			--no-create-home \
 			${USER}
 	fi
 }
