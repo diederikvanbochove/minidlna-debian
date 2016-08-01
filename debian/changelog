@@ -1,3 +1,9 @@
+minidlna (1.1.5+dfsg-4) unstable; urgency=medium
+
+  * debian/minidlna.postinst: Do not fail if cache_dir is absent.
+
+ -- Alexander GQ Gerasiov <gq@debian.org>  Mon, 01 Aug 2016 16:45:51 +0300
+
 minidlna (1.1.5+dfsg-3) unstable; urgency=medium
 
   * Control /var/lib/minidlna with debhelper/dpkg. (Closes: #820286.)
