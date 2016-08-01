@@ -40,10 +40,12 @@ fix_statoverride() {
 
 fix_permissions() {
 	# Previous versions use some strange and even not secure permissions,
-	# so we shold fix them here.
+	# so we should fix them here.
 	chown root:root /etc/minidlna.conf
-	chown ${USER}:${USER} "${CACHE_DIR}"
-	chmod 750 "${CACHE_DIR}"
+	if [ -d "${CACHE_DIR}" ];then
+		chown ${USER}:${USER} "${CACHE_DIR}"
+		chmod 750 "${CACHE_DIR}"
+	fi
 }
 
 ACTION="$1"
