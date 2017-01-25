@@ -1,3 +1,18 @@
+minidlna (1.1.6+dfsg-1) unstable; urgency=medium
+
+  * debian/minidlna.conf: Fix default values and update comments.
+  * debian/minidlna.conf.5: Reformat text, add example from upstream's manpage.
+  * debian/minidlna.conf, debian/minidlna.conf.5, debian/NEWS: New config option
+    wide_links.
+  * debian/patches: Patches refreshed.
+  * debian/patches/06-fix-setlocale.patch removed, fixed upstream.
+  * Add 11-http-parse.patch and 12-libavformat-57.patch from upstream's git.
+  * debian/copyright: Misc small fixes and updates.
+  * debian/control: Use secure (https) links in Homepage and Vcs-* fields.
+  * Add 13-missing-ru-po.patch: Add missing translation string to ru.po.
+
+ -- Alexander GQ Gerasiov <gq@debian.org>  Wed, 25 Jan 2017 19:35:22 +0300
+
 minidlna (1.1.5+dfsg-4) unstable; urgency=medium
 
   * debian/minidlna.postinst: Do not fail if cache_dir is absent.
