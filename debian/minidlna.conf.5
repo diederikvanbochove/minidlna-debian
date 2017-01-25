@@ -43,17 +43,21 @@ and empty lines are interpreted as comments.
 The possible
 keywords and their meanings are as follows:
 .Bl -tag -width Ds
+
+
 .It Cm album_art_names
 List of filenames to check for when searching for album art cache, separated by
 forward slashes
 .Pq Ql / .
 This option can be specified more than once.
+
 .It Cm db_dir
 Path to the directory
 .Nm minidlnad
 should use to store its database and album art cache. Uses
 .Pa /var/lib/minidlna
 by default.
+
 .It Cm enable_tivo
 Set to
 .Dq yes
@@ -61,14 +65,17 @@ to enable support for streaming JPEG and mp3 files to a TiVo supporting HMO.
 Set to
 .Dq no
 otherwise.
+
 .It Cm friendly_name
 Customize the name that the
 .Nm minidlnad
 server sends to clients. Defaults to
 .Dq hostname:\ username .
+
 .It Cm force_sort_criteria
 Always set SortCriteria to this value, regardless of the SortCriteria passed by the clien
 t. ( E.g. force_sort_criteria=+upnp:class,+upnp:originalTrackNumber,+dc:title )
+
 .It Cm inotify
 Set to
 .Dq yes
@@ -81,9 +88,11 @@ to disable inotify.
 if it is also unspecified or empty, it binds to all the valid network
 interfaces
 .Pq except loopback .
+
 .It Cm log_dir
 Path to the directory where the log file should be stored. Defaults to
 .Pa /var/log .
+
 .It Cm log_level
 Defines the type of messages that should be logged, and down to which level of
 importance they should be considered.
@@ -127,8 +136,10 @@ ssdp,\:tivo=warn
 which logs every type of message at the
 .Dq warn
 level.
+
 .It Cm max_connections
 Specify maximum number of simultaneous connections. Note: many clients open several simultaneous connections while streaming.
+
 .It Cm media_dir
 Path to the directory containing the media files the
 .Nm minidlnad
@@ -153,24 +164,48 @@ for video files;
 .Ql P
 for image files.
 .El
-For example, if you want to include only video files located under the
-.Pa /opt/media/videos
-directory, you would use
-.Cm media_dir=V,/opt/media/videos .
+
+For example, if you want to include only video files located
+in /srv/multimedia/videos directory, and only music
+in /srv/multimedia/music, then you would use
+       media_dir=V,/srv/multimedia/videos
+       media_dir=A,/srv/multimedia/music
+
+Another example would be
+       media_dir=V,/srv/multimedia/videos
+       media_dir=V,/srv/multimedia/movies
+       media_dir=A,/srv/multimedia/music
+
+Or, if you did not care what type it finds, then you could use
+       media_dir=/srv/multimedia/videos
+       media_dir=/srv/multimedia/movies
+       media_dir=/srv/multimedia/music
+
+You can mix it up, find anything in music, but only Videos, in videos and movies
+       media_dir=V,/srv/multimedia/videos
+       media_dir=V,/srv/multimedia/movies
+       media_dir=/srv/multimedia/music
+
+.fi
+
 .It Cm merge_media_dirs
 Merge all media_dir base contents into the root container. The default value is no.
+
 .It Cm minissdpdsocket
 Path to the MiniSSDPd socket, if you want to use
 .Nm minidlnad
 together with MiniSSDPd. Defaults to
 .Pa /run/minissdpd.sock .
+
 .It Cm model_name
 Set the model name reported to clients.
 Defaults to
 .Dq Windows Media Connect compatible (MiniDLNA) .
+
 .It Cm model_number
 Set the model number reported to clients. Defaults to the version number of
 .Nm minidlnad .
+
 .It Cm network_interface
 Network interface(s) to bind to
 .Pq e.g. eth0 ,
@@ -178,19 +213,23 @@ comma delimited. This option can be specified more than once. If unspecified or 
 .Nm minidlnad
 binds to all the valid network interfaces
 .Pq except loopback .
+
 .It Cm notify_interval
 Set the notify interval, in seconds. The default is 895 seconds.
+
 .It Cm port
 Port number for HTTP traffic
 .Pq descriptions, SOAP, media transfe .
 This option is mandatory, unless the port number is specified on the
 command-line using
 .Fl p Pq see Xr minidlnad 1 .
+
 .It Cm presentation_url
 Define the URL presented to clients
 .Pq e.g. Dq http://example.com:80 .
 The default is
 .Ql / .
+
 .It Cm root_container
 Use a different container as the root of the tree exposed to clients. The
 possible values 
@@ -224,9 +263,10 @@ If you specify
 and the client device is audio only, then
 .Dq Music/Folders
 will be used as the root container.
+
 .It Cm serial
-Set the serial number reported to clients. Defaults to
-.Dq 00000000 .
+Set the serial number reported to clients. Defaults to MAC address od network interface.
+
 .It Cm strict_dlna
 Set to
 .Dq yes
@@ -235,6 +275,7 @@ of very large JPEG images, which may hurt JPEG serving performance on (at
 least) Sony DLNA products. Set to
 .Dq no
 otherwise.
+
 .It Cm user
 Specify the user name of UID to run as. Beware that if you are using the init script to start
 .Nm minidlnad ,
@@ -243,6 +284,7 @@ then this option has no effect and you should set
 in
 .Pa /etc/default/minidlna
 instead.
+
 .It Cm uuid
 Specify UID to run as.
 .El
