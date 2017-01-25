@@ -29,8 +29,8 @@ Copyright: 2013, NETGEAR
 License: GPL-2
 
 Files: codelength.h getifaddr.? minidlnapath.h minidlnatypes.h minissdp.?
-       minixml.? options.? testupnpdescgen.c upnpdescgen.? upnpdescstrings.h
-       upnpreplyparse.? LICENCE.miniupnpd
+       minixml.? options.? testupnpdescgen.c upnpdescgen.? upnpreplyparse.?
+       LICENCE.miniupnpd
 Copyright: 2005-2008, Thomas Bernard <miniupnp@free.fr>
 License: BSD-3-clause
 
@@ -69,8 +69,7 @@ Copyright: 2010-2014, Benoît Knecht <benoit.knecht@fsfe.org>
 	2015, Alexander GQ Gerasiov <gq@debian.org>
 License: BSD-3-clause
 
-Files: debian/minidlna.preinst debian/minidlna.postinst
-       debian/minidlna.postrm debian/minidlna.init
+Files: debian/minidlna.postinst debian/minidlna.postrm debian/minidlna.init
 Copyright: 2007-2008, Leonhard Wimmer <leo@mediatomb.cc>
            2007-2008, Andres Mejia <mcitadel@gmail.com>
            2010-2013, Benoît Knecht <benoit.knecht@fsfe.org>
@@ -79,6 +78,7 @@ License: GPL-2
 Files: debian/minidlna.conf.5
 Copyright: 2009, Justin Maggard <jmaggard@users.sourceforge.net>
            2010-2012, Benoît Knecht <benoit.knecht@fsfe.org>
+           2008, Noel Butler <noelb@ausics.net>
 License: GPL-2
 
 
@@ -159,8 +159,3 @@ License: Expat
  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
-
-License: FSFUL
- This file is free software; the Free Software Foundation
- gives unlimited permission to copy and/or distribute it,
- with or without modifications, as long as this notice is preserved.
