@@ -7,3 +7,4 @@
 10-db_dir-should-not-affect-log_dir.patch
 11-http-parse.patch
 12-libavformat-57.patch
+13-missing-ru-po.patch
