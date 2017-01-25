@@ -5,3 +5,5 @@
 05-update-help-output.patch
 07-fix-multi-artist-album-handling.patch
 10-db_dir-should-not-affect-log_dir.patch
+11-http-parse.patch
+12-libavformat-57.patch
