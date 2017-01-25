@@ -3,6 +3,5 @@
 03-make-sure-the-database-is-closed-after-scanning.patch
 04-reload-log-file-on-SIGUSR2.patch
 05-update-help-output.patch
-06-fix-setlocale.patch
 07-fix-multi-artist-album-handling.patch
 10-db_dir-should-not-affect-log_dir.patch
