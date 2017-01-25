@@ -96,7 +96,7 @@ Updated: 2015-03-01
  sighup(int sig)
  {
  	signal(sig, sighup);
-@@ -969,6 +978,8 @@
+@@ -961,6 +970,8 @@
  	sa.sa_handler = process_handle_child_termination;
  	if (sigaction(SIGCHLD, &sa, NULL))
  		DPRINTF(E_FATAL, L_GENERAL, "Failed to set %s handler. EXITING.\n", "SIGCHLD");

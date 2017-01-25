@@ -9,8 +9,8 @@ Updated: 2015-03-01
 
 --- a/minidlna.c
 +++ b/minidlna.c
-@@ -264,7 +264,7 @@
- #endif
+@@ -240,7 +240,7 @@
+ 	fclose(info);
  #else
  	char * logname;
 -	logname = getenv("LOGNAME");
