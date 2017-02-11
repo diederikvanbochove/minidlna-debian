@@ -84,10 +84,9 @@ to enable inotify monitoring of the files under
 to automatically discover new files. Set to
 .Dq no
 to disable inotify.
-.Cm network_interface ;
-if it is also unspecified or empty, it binds to all the valid network
-interfaces
-.Pq except loopback .
+
+.It Cm network_interface
+Comma separated list of network interfaces to bind to. Default is empty which means bind to all.
 
 .It Cm log_dir
 Path to the directory where the log file should be stored. Defaults to
