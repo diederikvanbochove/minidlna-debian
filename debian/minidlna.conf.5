@@ -277,7 +277,7 @@ least) Sony DLNA products. Set to
 otherwise.
 
 .It Cm user
-Specify the user name of UID to run as. Beware that if you are using the init script to start
+Specify the user name or UID to run as. Beware that if you are using the init script to start
 .Nm minidlnad ,
 then this option has no effect and you should set
 .Ev USER
@@ -286,7 +286,7 @@ in
 instead.
 
 .It Cm uuid
-Specify UID to run as.
+Specify device's UPnP UUID minidlna should use. By default MAC address is used to build uniq UUID.
 
 .It Cm wide_links
 Set to 'yes' to allow symlinks that point outside user-defined media_dirs. By default, wide symlinks are not followed.
