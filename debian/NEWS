@@ -2,10 +2,10 @@ minidlna (1.1.6+dfsg-1) unstable; urgency=medium
 
   With this version of minidlna new config option appears: wide_links. By
   default it's turned off and disallows access to files outside media_dirs
-  even if symlinks from media_dirs points on it.
+  even if symlinks from media_dirs point to them.
 
   If you have symlinks in you media_dirs (/var/lib/minidlna by default) and
-  want to access them via minidlna do not forget to turn media_dirs on.
+  want to access them via minidlna do not forget to turn wide_links on.
 
   See minidlna.conf(5) or comments in config file itself for details.
 
