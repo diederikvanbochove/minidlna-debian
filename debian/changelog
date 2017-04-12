@@ -1,3 +1,13 @@
+minidlna (1.1.6+dfsg-2) unstable; urgency=medium
+
+  * minidlna.conf, minidlna.conf.5: Clarify meaning of user and uuid options.
+    (Closes: #854802)
+  * minidlna.conf.5: Fix format issue with network_interface option.
+  * Fix typos in debian/NEWS (Closes: #858012).
+  * minidlna.conf.5: Fix warnings (thanks, Lintian).
+
+ -- Alexander GQ Gerasiov <gq@debian.org>  Wed, 12 Apr 2017 14:09:22 +0300
+
 minidlna (1.1.6+dfsg-1) unstable; urgency=medium
 
   * debian/minidlna.conf: Fix default values and update comments.
