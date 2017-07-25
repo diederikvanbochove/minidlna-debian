@@ -80,7 +80,7 @@ Updated: 2015-03-01
  
 --- a/minidlna.c
 +++ b/minidlna.c
-@@ -166,6 +166,15 @@
+@@ -167,6 +167,15 @@
  }
  
  static void
@@ -96,7 +96,7 @@ Updated: 2015-03-01
  sighup(int sig)
  {
  	signal(sig, sighup);
-@@ -961,6 +970,8 @@
+@@ -974,6 +983,8 @@
  	sa.sa_handler = process_handle_child_termination;
  	if (sigaction(SIGCHLD, &sa, NULL))
  		DPRINTF(E_FATAL, L_GENERAL, "Failed to set %s handler. EXITING.\n", "SIGCHLD");

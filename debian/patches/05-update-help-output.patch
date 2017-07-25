@@ -4,7 +4,7 @@ Updated: 2015-03-01
 
 --- a/minidlna.c
 +++ b/minidlna.c
-@@ -880,11 +880,13 @@
+@@ -892,11 +892,13 @@
  
  	if (runtime_vars.port <= 0)
  	{
@@ -20,5 +20,5 @@ Updated: 2015-03-01
 -			"\t\t[-s serial] [-m model_number]\n"
 +			"\t\t[-u uid_to_run_as]\n"
  #ifdef __linux__
- 			"\t\t[-w url] [-R] [-L] [-S] [-V] [-h]\n"
+ 			"\t\t[-w url] [-r] [-R] [-L] [-S] [-V] [-h]\n"
  #else
