@@ -8,12 +8,12 @@ Source: http://sourceforge.net/projects/minidlna/files/
  using the debian/extra/make_icons.sh script (see the header of that file for
  instructions).
 
-Files: albumart.? containers.? image_utils.? inotify.? metadata.?
+Files: albumart.? containers.? image_utils.? monitor.? metadata.?
        playlist.? scanner.? scanner_sqlite.h sendfile.h sql.? tivo_beacon.h
        tivo_commands.? tivo_utils.? upnpsoap.h utils.? uuid.?
        AUTHORS NEWS README TODO minidlna.conf linux/minidlna.init.d.script.tmpl
        .gitignore ChangeLog COPYING
-Copyright: 2008-2010, Justin Maggard <jmaggard@users.sourceforge.net>
+Copyright: 2008-2017, Justin Maggard <jmaggard@users.sourceforge.net>
 License: GPL-2
 
 Files: minidlna.conf.5 minidlnad.8
@@ -24,7 +24,7 @@ Files: autogen.sh configure.ac Makefile.am
 Copyright: 2013-2014, Justin Maggard <jmaggard@users.sourceforge.net>
 License: GPL-2+
 
-Files: clients.? libav.h
+Files: clients.? libav.h avahi.?
 Copyright: 2013, NETGEAR
 License: GPL-2
 
