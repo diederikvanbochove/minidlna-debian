@@ -1,3 +1,13 @@
+minidlna (1.2.0+dfsg-1) unstable; urgency=medium
+
+  * 11-http-parse.patch removed: fixed upstream.
+  * 12-libavformat-57.patch removed: fixed upstream.
+  * debian/patches refreshed.
+  * debian/copyright updated.
+  * Bump Standards-Version to 4.0.0 (no additional changes needed).
+
+ -- Alexander GQ Gerasiov <gq@debian.org>  Fri, 04 Aug 2017 22:50:21 +0300
+
 minidlna (1.1.6+dfsg-2) unstable; urgency=medium
 
   * minidlna.conf, minidlna.conf.5: Clarify meaning of user and uuid options.
