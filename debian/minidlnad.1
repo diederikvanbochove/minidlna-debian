@@ -80,7 +80,9 @@ PID file to use; the default is
 .It Fl p Ar port
 Port number to listen on.
 .It Fl R
-Forces a full rescan of the media files.
+Forces a full rescan of the media files. First it will remove all cached data and database. Any bookmarks will be lost.
+.It Fl r
+Do a non-destructive rescan of the media files on start-up.
 .It Fl S
 Stay foreground. Can be used when
 .Nm
