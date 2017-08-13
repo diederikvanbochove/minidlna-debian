@@ -19,4 +19,6 @@ START_DAEMON="yes"
 #GROUP="minidlna"
 
 # Additional options that are passed to the daemon
-DAEMON_OPTS=""
+# We pass -r option to do soft non-destructive rebuild on every start-up.
+# If your systerm restarts often, you might want to remove this.
+DAEMON_OPTS="-r"
