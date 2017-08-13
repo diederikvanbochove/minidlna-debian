@@ -1,3 +1,15 @@
+minidlna (1.2.0+dfsg-2) unstable; urgency=medium
+
+  * debian/minidlnad.1: Mention -r option.
+  * debian/minidlna.default: Add -r option. Thanks to Dirk Schmitt for
+    suggestion. (Closes: #870868).
+  * debian/NEWS: Mention -r option in defaults.
+  * debian/copyright: Fix avahi.? entry.
+  * minidlna.conf, minidlna.conf.5: Add new tivo_discovery option.
+  * debian/minidlna.conf.5: Small fixes.
+
+ -- Alexander GQ Gerasiov <gq@debian.org>  Sun, 13 Aug 2017 19:17:06 +0300
+
 minidlna (1.2.0+dfsg-1) unstable; urgency=medium
 
   * 11-http-parse.patch removed: fixed upstream.
