@@ -24,8 +24,14 @@ Files: autogen.sh configure.ac Makefile.am
 Copyright: 2013-2014, Justin Maggard <jmaggard@users.sourceforge.net>
 License: GPL-2+
 
-Files: clients.? libav.h avahi.?
-Copyright: 2013, NETGEAR
+Files: clients.? libav.h
+Copyright: 2013-2017, NETGEAR
+License: GPL-2
+
+Files: avahi.?
+Copyright: Daniel Stonier <d.stonier AT gmail DOT com>
+	   Daniel S. Haischt <me@daniel.stefan.haischt.name>
+	   2017, NETGEAR
 License: GPL-2
 
 Files: codelength.h getifaddr.? minidlnapath.h minidlnatypes.h minissdp.?
