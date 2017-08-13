@@ -250,6 +250,12 @@ of very large JPEG images, which may hurt JPEG serving performance on (at
 least) Sony DLNA products. Set to
 .Dq no
 otherwise.
+.It Cm tivo_discovery
+Which method to use for registering in TiVo. By default
+.Dq bonjour
+is used. You can switch to legacy
+.Dq beacon
+method.
 .It Cm user
 Specify the user name or UID to run as. Beware that if you are using the init script to start
 .Nm minidlnad ,
