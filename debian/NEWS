@@ -1,3 +1,15 @@
+minidlna (1.2.0+dfsg-2) unstable; urgency=medium
+
+  With 1.2.0 release new option -r was introduced. It forces minidlnad to do
+  soft rebuild of the database on startup. It helps in situations when data on
+  disk was changed, but minidlna daemon missed this for some reason and did not
+  update the database.
+
+  I added -r option to default parameters. If your system restarts often and
+  you do not need this, feel free to remove it from /etc/default/minidlna.
+
+ -- Alexander GQ Gerasiov <gq@debian.org>  Sun, 13 Aug 2017 18:18:12 +0300
+
 minidlna (1.1.6+dfsg-1) unstable; urgency=medium
 
   With this version of minidlna new config option appears: wide_links. By
