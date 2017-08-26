@@ -1,3 +1,9 @@
+minidlna (1.2.1+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Alexander GQ Gerasiov <gq@debian.org>  Sun, 27 Aug 2017 01:12:26 +0300
+
 minidlna (1.2.0+dfsg-2) unstable; urgency=medium
 
   * debian/minidlnad.1: Mention -r option.
