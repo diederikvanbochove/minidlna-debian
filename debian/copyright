@@ -30,8 +30,8 @@ License: GPL-2
 
 Files: avahi.?
 Copyright: Daniel Stonier <d.stonier AT gmail DOT com>
-	   Daniel S. Haischt <me@daniel.stefan.haischt.name>
-	   2017, NETGEAR
+           Daniel S. Haischt <me@daniel.stefan.haischt.name>
+           2017, NETGEAR
 License: GPL-2
 
 Files: codelength.h getifaddr.? minidlnapath.h minidlnatypes.h minissdp.?
@@ -72,7 +72,7 @@ License: GPL-2
 
 Files: debian/*
 Copyright: 2010-2014, Benoît Knecht <benoit.knecht@fsfe.org>
-	2015, Alexander GQ Gerasiov <gq@debian.org>
+ 	2015, Alexander GQ Gerasiov <gq@debian.org>
 License: BSD-3-clause
 
 Files: debian/minidlna.postinst debian/minidlna.postrm debian/minidlna.init
