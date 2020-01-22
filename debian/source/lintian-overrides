@@ -1,2 +1,2 @@
 # Upstream doesn't sign its source tarballs:
-minidlna source: debian-watch-may-check-gpg-signature
+minidlna source: debian-watch-does-not-check-gpg-signature
