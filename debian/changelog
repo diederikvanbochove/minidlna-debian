@@ -442,4 +442,3 @@ minidlna (1.0.18-1) unstable; urgency=low
   * Pre- and post- inst/rm scripts to add/remove a minidlna user and group
 
  -- Benoît Knecht <benoit.knecht@fsfe.org>  Fri, 15 Oct 2010 00:32:01 +0200
-
