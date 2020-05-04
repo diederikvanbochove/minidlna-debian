@@ -6,7 +6,7 @@ set -e
 case "$1" in
     purge)
 	rm -rf /var/cache/minidlna
-        rm -f /var/log/minidlna.log*
+        rm -f /var/log/minidlna.log* /var/log/minidlna
         ;;
 
     remove|upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
