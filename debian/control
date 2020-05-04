@@ -26,6 +26,7 @@ Depends: adduser,
          lsb-base,
          ${misc:Depends},
          ${shlibs:Depends}
+Pre-Depends: ${misc:Pre-Depends}
 Description: lightweight DLNA/UPnP-AV server targeted at embedded systems
  MiniDLNA (aka ReadyDLNA) is server software with the aim of being
  fully compliant with DLNA/UPnP-AV clients.

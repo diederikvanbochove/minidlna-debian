@@ -257,13 +257,15 @@ is used. You can switch to legacy
 .Dq beacon
 method.
 .It Cm user
-Specify the user name or UID to run as. Beware that if you are using the init script to start
+Specify the user name or UID to run as. Beware that if you are using an init system to start
 .Nm minidlnad ,
-then this option has no effect and you should set
+then this option has no effect and you should override default user in
+.Pa minidlna.service
+for systemd or set
 .Ev USER
 in
 .Pa /etc/default/minidlna
-instead.
+for sysV init.
 .It Cm uuid
 Specify device's UPnP UUID minidlna should use. By default MAC address is used to build uniq UUID.
 .It Cm wide_links

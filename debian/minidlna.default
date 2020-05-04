@@ -1,6 +1,10 @@
 # Defaults for minidlna initscript
-# sourced by /etc/init.d/minidlna
-# installed at /etc/default/minidlna by the maintainer scripts
+# sourced by minidlna.service and /etc/init.d/minidlna
+#
+# WARNING: This file is used for compatibility with sysv init only.
+# If you are using systemd (Debian default), please override minidlna.service
+# unit instead of modifying these variables.
+
 
 # These options can be set to modify the behavior of the minidlna init script.
 # The options commented out show the default values.
@@ -12,10 +16,11 @@
 #LOGFILE="/var/log/minidlna/minidlna.log"
 
 # User and group the daemon should run as
+# only for sysV init, for systemd please override minidlna.service
 #USER="minidlna"
 #GROUP="minidlna"
 
 # Additional options that are passed to the daemon
 # We pass -r option to do soft non-destructive rebuild on every start-up.
 # If your systerm restarts often, you might want to remove this.
-DAEMON_OPTS="-r"
+#DAEMON_OPTS="-r"
