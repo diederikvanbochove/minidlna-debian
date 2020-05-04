@@ -6,3 +6,4 @@
 07-fix-multi-artist-album-handling.patch
 10-db_dir-should-not-affect-log_dir.patch
 13-missing-ru-po.patch
+14-fix-gcc10-ftbfs.patch
