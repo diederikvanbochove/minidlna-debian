@@ -1,7 +1,7 @@
-Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: minidlna
 Upstream-Contact: Justin Maggard <jmaggard@users.sourceforge.net>
-Source: http://sourceforge.net/projects/minidlna/files/
+Source: https://sourceforge.net/projects/minidlna/files/
  The icons.c file in the original tarball contained binary blobs of possibly
  unfree images. It has hence been replaced in the DFSG tarball by a file
  containing the free Debian logo instead. It can be generated from the SVG logo
