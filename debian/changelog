@@ -1,3 +1,27 @@
+minidlna (1.2.1+dfsg-2) unstable; urgency=medium
+
+  [ Alexander Gerasiov ]
+  * Add 14-fix-gcc10-ftbfs.patch: Fixes FTBFS with gcc10 (Closes: #957541).
+  * Move logs to /var/log/minidlna dir.
+  * Remove unused START_DAEMON var from default file (Closes: #879541).
+  * Add systemd service file (Closes: #950270).
+  * Bump debhelper's version to 12.
+  * Bump Standards-Version.
+  * d/control: Update Vcs headers.
+  * d/copyright: Secure links to format and homepage.
+
+  [ Debian Janitor ]
+  * Trim trailing whitespace.
+  * debian/copyright: use spaces rather than tabs to start continuation lines.
+  * Update renamed lintian tag names in lintian overrides.
+  * Set upstream metadata fields: Archive, Repository.
+
+  [ Alexander Gerasiov ]
+  * Add 15-use-newer-ip_multicast_if-api.patch: (Closes: #941410).
+  * d/control: Update description (Closes: #927393).
+
+ -- Alexander GQ Gerasiov <gq@debian.org>  Mon, 04 May 2020 14:01:19 +0300
+
 minidlna (1.2.1+dfsg-1) unstable; urgency=medium
 
   * New upstream release.
