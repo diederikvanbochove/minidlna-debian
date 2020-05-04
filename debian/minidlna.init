@@ -27,7 +27,7 @@ CONFIGFILE=/etc/minidlna.conf
 LOGFILE=/var/log/$NAME/minidlna.log
 USER=minidlna
 GROUP=minidlna
-DAEMON_OPTS=""
+DAEMON_OPTS="-r"
 
 # Exit if the package is not installed
 [ -x "$DAEMON" ] || exit 0

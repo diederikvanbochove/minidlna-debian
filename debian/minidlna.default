@@ -5,9 +5,6 @@
 # These options can be set to modify the behavior of the minidlna init script.
 # The options commented out show the default values.
 
-# Start the daemon if set to "yes"
-START_DAEMON="yes"
-
 # Path to the configuration file
 #CONFIGFILE="/etc/minidlna.conf"
 
