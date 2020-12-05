@@ -1,3 +1,12 @@
+minidlna (1.2.1+dfsg-2+deb10u1) buster-security; urgency=high
+
+  * Add 0011-upnphttp-Disallow-negative-HTTP-chunk-lengths.patch
+    CVE-2020-28926 (Closes: #976595).
+  * Add 0012-upnphttp-Validate-SUBSCRIBE-callback-URL.patch
+    CVE-2020-12695 (Closes: #976594).
+
+ -- Alexander GQ Gerasiov <gq@debian.org>  Sat, 05 Dec 2020 20:21:18 +0300
+
 minidlna (1.2.1+dfsg-2) unstable; urgency=medium
 
   [ Alexander Gerasiov ]
