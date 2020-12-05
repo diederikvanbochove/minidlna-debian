@@ -9,3 +9,4 @@
 14-fix-gcc10-ftbfs.patch
 15-use-newer-ip_multicast_if-api.patch
 0011-upnphttp-Disallow-negative-HTTP-chunk-lengths.patch
+0012-upnphttp-Validate-SUBSCRIBE-callback-URL.patch
