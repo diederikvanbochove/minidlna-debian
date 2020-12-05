@@ -20,9 +20,11 @@ and that cache ignores artist names as well.
  scanner.c | 3 +--
  1 file changed, 1 insertion(+), 2 deletions(-)
 
+diff --git a/scanner.c b/scanner.c
+index f240a2f..b9ee514 100644
 --- a/scanner.c
 +++ b/scanner.c
-@@ -98,9 +98,8 @@
+@@ -98,9 +98,8 @@ insert_container(const char *item, const char *rootParent, const char *refID, co
  					"left join DETAILS d on (o.DETAIL_ID = d.ID)"
  					" where o.PARENT_ID = '%s'"
  					" and o.NAME like '%q'"
