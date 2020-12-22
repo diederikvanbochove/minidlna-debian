@@ -1,3 +1,11 @@
+minidlna (1.2.1+dfsg-2+deb10u2) buster-security; urgency=medium
+
+  * d/minidlna.postrm: Do not fail on purge (Closes: #975372). This fixes the
+    regression (from 1.2.1+dfsg-2) in stable archive after accidentially
+    uploaded 1.2.1+dfsg-2+deb10u1.
+
+ -- Alexander GQ Gerasiov <gq@debian.org>  Sun, 03 Jan 2021 19:16:43 +0300
+
 minidlna (1.2.1+dfsg-2+deb10u1) buster-security; urgency=high
 
   * Add 0011-upnphttp-Disallow-negative-HTTP-chunk-lengths.patch
