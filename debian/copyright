@@ -8,6 +8,11 @@ Source: https://sourceforge.net/projects/minidlna/files/
  using the debian/extra/make_icons.sh script (see the header of that file for
  instructions).
 
+Files: debian/*
+Copyright: 2010-2014, Benoît Knecht <benoit.knecht@fsfe.org>
+	   2015-2020, Alexander GQ Gerasiov <gq@debian.org>
+License: BSD-3-clause
+
 Files: albumart.? containers.? image_utils.? monitor.? metadata.?
        playlist.? scanner.? scanner_sqlite.h sendfile.h sql.? tivo_beacon.h
        tivo_commands.? tivo_utils.? upnpsoap.h utils.? uuid.?
@@ -27,6 +32,22 @@ License: GPL-2+
 Files: clients.? libav.h
 Copyright: 2013-2017, NETGEAR
 License: GPL-2
+
+Files: event.h
+Copyright: 2017, Gleb Smirnoff <glebius@FreeBSD.org>
+	   2020, Justin Maggard <jmaggard10@gmail.com>
+License: GPL-2
+
+Files: kqueue.c select.c
+Copyright: 2002-2017, Igor Sysoev
+	   2011-2017, Nginx, Inc.
+	   2017-2018, Gleb Smirnoff <glebius@FreeBSD.org>
+License: BSD-2-clause
+
+Files: monitor_kqueue.c
+Copyright: 2013, Bernard Spil <brnrd@FreeBSD.org>
+	   2017-2018 Gleb Smirnoff <glebius@FreeBSD.org>
+License: BSD-2-clause
 
 Files: avahi.?
 Copyright: Daniel Stonier <d.stonier AT gmail DOT com>
@@ -70,11 +91,6 @@ Files: linux/inotify-syscalls.h
 Copyright: 2005, Robert Love <robert.w.love@intel.com>
 License: GPL-2
 
-Files: debian/*
-Copyright: 2010-2014, Benoît Knecht <benoit.knecht@fsfe.org>
- 	2015, Alexander GQ Gerasiov <gq@debian.org>
-License: BSD-3-clause
-
 Files: debian/minidlna.postinst debian/minidlna.postrm debian/minidlna.init
 Copyright: 2007-2008, Leonhard Wimmer <leo@mediatomb.cc>
            2007-2008, Andres Mejia <mcitadel@gmail.com>
@@ -82,9 +98,10 @@ Copyright: 2007-2008, Leonhard Wimmer <leo@mediatomb.cc>
 License: GPL-2
 
 Files: debian/minidlna.conf.5
-Copyright: 2009, Justin Maggard <jmaggard@users.sourceforge.net>
+Copyright: 2008, Noel Butler <noelb@ausics.net>
+	   2009, Justin Maggard <jmaggard@users.sourceforge.net>
            2010-2012, Benoît Knecht <benoit.knecht@fsfe.org>
-           2008, Noel Butler <noelb@ausics.net>
+           2015-2020, Alexander Gerasiov <gq@debian.org>
 License: GPL-2
 
 
@@ -120,6 +137,30 @@ License: GPL-2+
  .
  On Debian systems, the complete text of the GNU General
  Public License version 2 can be found in "/usr/share/common-licenses/GPL-2".
+
+License: BSD-2-clause
+ All rights reserved.
+ .
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
 
 License: BSD-3-clause
  All rights reserved.
