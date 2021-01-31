@@ -1,0 +1,10 @@
+--- a/minidlna.c
++++ b/minidlna.c
+@@ -1019,7 +1019,6 @@
+ 	else if (GETFLAG(SYSTEMD_MASK))
+ 	{
+ 		pid = getpid();
+-		log_path[0] = '\0';
+ 	}
+ 	else
+ 	{
