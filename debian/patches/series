@@ -4,3 +4,4 @@
 07-fix-multi-artist-album-handling.patch
 08-Fix-testupnpdescgen-build.patch
 09-do-not-disable-logs-with-systemd.patch
+10-do-not-close-socket-on-sighup.patch
