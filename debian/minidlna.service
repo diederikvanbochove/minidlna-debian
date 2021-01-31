@@ -1,7 +1,7 @@
 [Unit]
 Description=MiniDLNA lightweight DLNA/UPnP-AV server
 Documentation=man:minidlnad(1) man:minidlna.conf(5)
-After=network.target
+After=local-fs.target remote-fs.target autofs
 
 [Service]
 Type=forking
