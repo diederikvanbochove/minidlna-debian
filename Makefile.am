@@ -58,7 +58,7 @@ minidlnad_LDADD = \
 	@LIBEXIF_LIBS@ \
 	@LIBINTL@ \
 	@LIBICONV@ \
-	-lFLAC $(flacogglibs) $(vorbislibs) $(avahilibs)
+	-lFLAC $(flacogglibs) $(vorbislibs) $(avahilibs) @LIBFFMPEGTHUMBNAILER_LIBS@
 
 testupnpdescgen_SOURCES = testupnpdescgen.c upnpdescgen.c
 testupnpdescgen_LDADD = \
